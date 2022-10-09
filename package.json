@@ -1,0 +1,24 @@
+{
+  "name": "local-charity",
+  "version": "1.0.0",
+  "description": "this is the project called local charity web application, aimed to web application for charity.",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RahulRajesh2001/Local-Charity.git"
+  },
+  "author": "Rahul Rajesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RahulRajesh2001/Local-Charity/issues"
+  },
+  "homepage": "https://github.com/RahulRajesh2001/Local-Charity#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5"
+  }
+}
