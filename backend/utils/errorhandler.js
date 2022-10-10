@@ -6,7 +6,7 @@ class ErrorHandler extends Error{
         Error.captureStackTrace(this,this.constructor);
 
     }
-    git
+
 }
 
 module.exports = ErrorHandler
