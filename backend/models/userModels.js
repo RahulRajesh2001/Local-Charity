@@ -15,12 +15,12 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:[true,"Please enter your email"],
         unique:true,
-        validator:[validator.isEmail,"Please enter your valid email"]
+        validate:[validator.isEmail,"Please enter your valid email"]
     },
 password:{
     type:String,
         required:[true,"Please enter your password"],
-        maxlength:[8,"Password should be greater than 8 charactors"],
+        minlength:[8,"Password should be greater than 8 charactors"],
         select:false
 },
 avatar:{
@@ -47,6 +47,7 @@ resetPasswordExpire:Date,
 
 });
 
+//password hashing
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")){
         next();
@@ -56,15 +57,16 @@ userSchema.pre("save",async function(next){
 //jwt token
 
 userSchema.methods.getJWTToken=function(){
-    return jwt.sign({id:this._id},process.env.JWT_SECRET,{
+    return jwt.sign({id:this._id},
+        process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRE,
         
     })
 
 }
 //compare password
-userSchema.methods.comparePassword=async function(enterPassword){
-    return  await bcryptjs.compare(enterPassword,this.password);
+userSchema.methods.comparePassword=async function(enteredPassword){
+    return  await bcryptjs.compare(enteredPassword,this.password);
 }
 
 //regenerating password 
