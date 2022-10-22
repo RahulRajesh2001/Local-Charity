@@ -2,6 +2,8 @@ const mongoose=require('mongoose')
 const validator=require('validator')
 const bcryptjs=require('bcryptjs')
 const jwt=require("jsonwebtoken")
+const crypto=require("crypto")
+const { reset } = require('nodemon')
 
 const userSchema=new mongoose.Schema({
 
@@ -69,8 +71,7 @@ userSchema.methods.comparePassword=async function(enteredPassword){
     return  await bcryptjs.compare(enteredPassword,this.password);
 }
 
-//regenerating password 
-//forgot password
+//password regeneration and other 2 routes .
 
 
 

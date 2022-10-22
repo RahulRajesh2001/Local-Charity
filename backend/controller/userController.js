@@ -14,6 +14,7 @@ exports.registerUser=catchAsyncErrors(async(req,res,next)=>{
             url:"profilepicUrl"
         }
     });
+ 
 
     sendToken(user , 201 , res);
 
@@ -57,4 +58,3 @@ exports.logout=catchAsyncErrors(async(req,res,next)=>{
         message:"Logout"
     })
 })
-
