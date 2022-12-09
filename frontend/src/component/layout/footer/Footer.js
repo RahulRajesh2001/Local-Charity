@@ -9,7 +9,7 @@ function Footer() {
   return (
    
 <footer id="footer">
-    <div class="leftfooter">
+    <div className="leftfooter">
         <h4>Download app</h4>
         <p>Download app for Android and IOS moblie phone</p>
         <Link to="">
@@ -21,12 +21,12 @@ function Footer() {
     </div>
 
     
-    <div class="midfooter">
+    <div className="midfooter">
 
       <h5>NO ONE HAS EVER BECOME POOR BY GIVING.</h5>
         <p>Copyrights 2023 &copy; localcharity org</p>
     </div>
-    <div class="rightfooter">
+    <div className="rightfooter">
       <h4>Follow Us</h4>
       <a href="www.instagram.com">Instagram</a><br/>
       <a href="www.facebook.com">Facebook</a><br/>

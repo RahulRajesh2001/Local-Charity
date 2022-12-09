@@ -1,19 +1,27 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useEffect } from 'react'
 import {CgMouse} from "react-icons/all"
 import "./Home.css"
 import Product from "./Product.js"
+import MetaData from '../layout/metadata'
+import {getProduct} from "../../actions/productAction"
+import{useSelector,useDispatch} from "react-redux";
 
-
-const product={
-  name:"Blue Tshirt",
-  images:[{url:"https://purepng.com/public/uploads/large/purepng.com-sky-blue-t-shirtclothingt-shirtt-shirtdressfashionclothshirt-691522330544ifxvx.png"}],
-  _id:"blue tshirt",
-  size:"L"
-};
 
 const Home = () => {
+  const dispatch=useDispatch();
+
+  const {loading,error,products,productsCount}=useSelector(
+    (state)=>state.products)
+
+  useEffect(()=>{
+    dispatch(getProduct())
+  },[dispatch]);
+
   return (
    <Fragment>
+
+    <MetaData title="Local Charity"/>
+
     <div className='banner'>
         <p>Welcome to local charity</p>
         <h1>Find suitable products below</h1>
@@ -28,15 +36,8 @@ const Home = () => {
 
     <div className='container' id='container'>
 
-      <Product product={product}/>
-      <Product product={product}/>
-      <Product product={product}/>
-      <Product product={product}/>
-      <Product product={product}/>
-      <Product product={product}/>
-      <Product product={product}/>
-      <Product product={product}/>
-
+    {products && products.map(product=>(<Product product={product}/>))}
+     
     </div>
 
      </Fragment>
