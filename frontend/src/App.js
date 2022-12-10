@@ -7,6 +7,7 @@ import Footer from './component/layout/footer/Footer';
 import {Routes,Route} from "react-router-dom"
 import Home from "./component/Home/Home.js"
 
+
 function App() {
   return (
     <>
@@ -15,7 +16,7 @@ function App() {
     <Routes>
       
       <Route exact path="/" element={<Home />} />
-
+      
       </Routes>
       <Footer/>
       </>
