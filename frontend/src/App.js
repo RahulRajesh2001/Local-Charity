@@ -6,6 +6,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Footer from './component/layout/footer/Footer';
 import {Routes,Route} from "react-router-dom"
 import Home from "./component/Home/Home.js"
+import ProductDetails from "./component/Product/ProductDetails"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <Routes>
       
       <Route exact path="/" element={<Home />} />
+      <Route path="/product/:id" element={<ProductDetails/>} />
       
       </Routes>
       <Footer/>
