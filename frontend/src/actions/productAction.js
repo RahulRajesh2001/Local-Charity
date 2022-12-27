@@ -19,7 +19,10 @@ import { ALL_PRODUCT_REQUEST
         if(category){
 
           link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
-        }
+        }else{
+          link =`/api/v1/products`
+         }
+  
   
         const { data } = await axios.get(link);
   
