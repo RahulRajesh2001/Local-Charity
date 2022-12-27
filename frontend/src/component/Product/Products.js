@@ -5,13 +5,22 @@ import { getProduct} from "../../actions/productAction";
 import ProductCard from "../Home/ProductCard"
 import Loader from "../layout/Loader/Loader"
 import Pagination from "react-js-pagination"
+import { Typography } from 'react-md';
 
+
+const categories = [
+  "Books",
+  "Cloths"
+];
 
 
 const Products = ({match}) => {
   const dispatch=useDispatch();
 
   const[currentPage,setCurrentPage]=useState(1);
+  const [category, setCategory] = useState("");
+
+
 
   const {products,loading,resultPerPage}=useSelector(
     (state)=>state.products
@@ -25,9 +34,9 @@ const Products = ({match}) => {
   }
 
 useEffect(()=>{
-  dispatch(getProduct(keyword,currentPage))
+  dispatch(getProduct(keyword,currentPage,category))
 
-},[dispatch,keyword,currentPage]);
+},[dispatch,keyword,currentPage,category]);
 
 
 
@@ -42,7 +51,26 @@ useEffect(()=>{
 
       {products && products.map(product=>(<ProductCard product={product}/>))}
       </div>
+      
 
+      <div className='filterBox'>
+
+      <Typography>Categories</Typography>
+            <ul className="categoryBox">
+              {categories.map((category) => (
+                <li
+                  className="category-link"
+                  key={category}
+                  onClick={() => setCategory(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+       
+      </div>
+
+     
     
 
 
@@ -66,13 +94,11 @@ activeLinkClass='pageLinkActive'
 
 />
 </div>
+</Fragment>}
 
-
-
-      
-      </Fragment>}
 
     </Fragment>
+  
   )
 }
 

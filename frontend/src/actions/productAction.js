@@ -9,14 +9,17 @@ import { ALL_PRODUCT_REQUEST
 
 
     export const getProduct =
-    (keyword = "", currentPage = 1) =>
+    (keyword = "", currentPage = 1,category) =>
     async (dispatch) => {
       try {
         dispatch({ type: ALL_PRODUCT_REQUEST });
   
-        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}`;
+        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
   
-        
+        if(category){
+
+          link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
+        }
   
         const { data } = await axios.get(link);
   
