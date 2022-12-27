@@ -1,23 +1,36 @@
-import React,{Fragment,useEffect} from 'react'
+import React,{Fragment,useEffect,useState} from 'react'
 import "./Products.css";
 import {useSelector,useDispatch}  from "react-redux";
 import { getProduct} from "../../actions/productAction";
 import ProductCard from "../Home/ProductCard"
 import Loader from "../layout/Loader/Loader"
+import Pagination from "react-js-pagination"
 
-const Donations = ({match}) => {
+
+
+const Products = ({match}) => {
   const dispatch=useDispatch();
-  const {products,loading,productCount}=useSelector(
+
+  const[currentPage,setCurrentPage]=useState(1);
+
+  const {products,loading,resultPerPage}=useSelector(
     (state)=>state.products
   );
 
 
   const keyword=match.params.keyword;
 
-useEffect(()=>{
-  dispatch(getProduct(keyword))
+  const setCurrentPageNo=(e)=>{
+    setCurrentPage(e)
+  }
 
-},[dispatch,keyword]);
+useEffect(()=>{
+  dispatch(getProduct(keyword,currentPage))
+
+},[dispatch,keyword,currentPage]);
+
+
+
 
 
   return (
@@ -29,6 +42,33 @@ useEffect(()=>{
 
       {products && products.map(product=>(<ProductCard product={product}/>))}
       </div>
+
+    
+
+
+
+<div className='paginationBox'>
+<Pagination 
+activePage={currentPage}
+itemsCountPerPage={resultPerPage}
+totalItemsCount={8}
+onChange={setCurrentPageNo}
+nextPageText="Next"
+prevPageText="Prev"
+firstPageText="1st"
+lastPageText="Last"
+itemClass='page-item'
+linkClass='page-link'
+activeClass='pageItemActive'
+activeLinkClass='pageLinkActive'
+
+
+
+/>
+</div>
+
+
+
       
       </Fragment>}
 
@@ -36,4 +76,4 @@ useEffect(()=>{
   )
 }
 
-export default Donations
+export default Products
