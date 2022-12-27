@@ -7,6 +7,8 @@ import Footer from './component/layout/footer/Footer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./component/Home/Home.js"
 import ProductDetails from "./component/Product/ProductDetails"
+import Products from "./component/Product/Products"
+import Search from "./component/Product/Search"
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
       <Switch>
       <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={ProductDetails} />
+        <Route exact path="/products" component={Products} />
+        <Route  path="/search" component={Search} />
       </Switch>
       <Footer/>
     </Router>

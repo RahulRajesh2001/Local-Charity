@@ -20,23 +20,17 @@ function Header() {
           style={{ maxHeight: '100px' }}
           navbarScroll
         >
-          <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link href="/donations">Donations</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/products">Donations</Nav.Link>
           <Nav.Link href="/account">Account</Nav.Link>
           <Nav.Link href="#action2">Admin</Nav.Link>         
         
 
         
         </Nav>
-        <Form className="d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success">Search</Button>
-        </Form>
+
+        <Nav.Link href="/search">Search</Nav.Link> 
+       
       </Navbar.Collapse>
     </Container>
   </Navbar>
