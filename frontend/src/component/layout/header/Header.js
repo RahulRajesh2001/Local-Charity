@@ -22,7 +22,7 @@ function Header() {
         >
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/products">Donations</Nav.Link>
-          <Nav.Link href="/account">Account</Nav.Link>
+          <Nav.Link href="/login">Account</Nav.Link>
           <Nav.Link href="#action2">Admin</Nav.Link>         
         
 
