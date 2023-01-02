@@ -13,9 +13,13 @@ import LoginSignUp from './component/User/LoginSignUp';
 import store from "./store"
 import { loadUser } from './actions/userActoin';
 import { useEffect } from 'react';
+import UserOptions from "./component/layout/header/UserOptions"
+import { useSelector } from 'react-redux';
 
 
 function App() {
+
+  const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
 
@@ -26,6 +30,8 @@ function App() {
   return (
     <Router>
       <Header/>
+
+      {isAuthenticated && <UserOptions user={user} />}
       <Switch>
       <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={ProductDetails} />
