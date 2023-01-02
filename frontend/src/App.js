@@ -10,9 +10,19 @@ import ProductDetails from "./component/Product/ProductDetails"
 import Products from "./component/Product/Products"
 import Search from "./component/Product/Search"
 import LoginSignUp from './component/User/LoginSignUp';
+import store from "./store"
+import { loadUser } from './actions/userActoin';
+import { useEffect } from 'react';
 
 
 function App() {
+
+  useEffect(() => {
+
+    store.dispatch(loadUser());
+
+   
+  }, []);
   return (
     <Router>
       <Header/>
