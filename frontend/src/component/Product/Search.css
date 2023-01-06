@@ -28,18 +28,18 @@
   .searchBox > input[type="submit"] {
     height: 8%;
     border-radius: 0%;
-    background-color: #CFFDE1;
+    background-color: #DEF5E5;
     border: none;
     padding: 1vmax;
     width: 10%;
     font: 300 1.1vmax "Roboto";
     cursor: pointer;
-    color: white;
+    color:black;
     transition: all 0.5s;
   }
   
   .searchBox > input[type="submit"]:hover {
-    background-color:#97DECE;
+    background-color: #BCEAD5;
   }
   
   @media screen and (max-width: 600px) {

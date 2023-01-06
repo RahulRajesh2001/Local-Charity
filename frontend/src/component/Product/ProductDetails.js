@@ -7,6 +7,7 @@ import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard.js"
 import Loader from "../layout/Loader/Loader"
 
+
 const ProductDetails = ({match}) => {
  
 
@@ -53,6 +54,7 @@ const{product,loading}=useSelector(
             <div className='detailsBlock-1'>
               <h2>{product.name}</h2>
               <p>Product # {product._id}</p>
+              
   
             </div>
             <div className='detailsBlock-2'>
@@ -66,7 +68,7 @@ const{product,loading}=useSelector(
                   <input value="1" type="number"></input>
                   <button>+</button>
                 </div>{""}
-                <button>Add to Cart</button>
+                <button>To Order</button>
               </div>
               <p>
                     Status:
@@ -77,8 +79,29 @@ const{product,loading}=useSelector(
   
             </div>
             <div className='detailsBlock-4'>
-              Description:<p>{product.description}</p>
+               Description:<p>{product.description}</p>
+              Catogory:<p>{product.category}</p>
+              {product.donator_details && 
+              product.donator_details.map((user_details)=>(
+                
+            <>
+             <u> <p className='donatorhead'>Donator Details</p></u>
+                Name:<p>{user_details.name}</p>
+                PhoneNumber:<p>{user_details.phoneNumber}</p>
+                Address:<p>{user_details.address}</p>
+                Locality:<p>{user_details.locality}</p>
+                City:<p>{user_details.city_district_town}</p>
+                Pincode:<p>{user_details.pincode}</p>
+                State:<p>{user_details.state}</p>
+                Landmark:<p>{user_details.landmark}</p>
+                Alternative PhoneNumber:<p>{user_details.alternative_phonenumber}</p> 
+
+                </>
+              ))}
+
+              
             </div>
+
             <button className='submitReview'>Submit Review</button>
   
           </div>

@@ -51,7 +51,7 @@
   }
   
   .page-item:hover {
-    background-color: rgb(230, 230, 230);
+    background-color:  #BCEAD5;
   }
   
   .page-item:hover .page-link {
@@ -59,11 +59,11 @@
   }
   
   .pageItemActive {
-    background-color: tomato;
+    background-color: #DEF5E5;
   }
   
   .pageLinkActive {
-    color:red;
+    color:black;
   }
   .filterBox {
     width: 10vmax;
@@ -77,14 +77,14 @@
   
   .category-link {
     list-style: none;
-    color: rgba(0, 0, 0, 0.61);
+    color:black;
     font: 400 1vmax "Roboto";
     margin: 0.4vmax;
     cursor: pointer;
     transition: all 0.5s;
   }
   .category-link:hover {
-    color: tomato;
+    color: #DEF5E5;
   }
   
   .filterBox > fieldset {
