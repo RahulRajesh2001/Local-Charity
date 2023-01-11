@@ -17,6 +17,10 @@ import UserOptions from "./component/layout/header/UserOptions"
 import { useSelector } from 'react-redux';
 import Profile from './component/User/Profile';
 import ProtectedRoute from "./component/Route/ProtectedRoute"
+import Cart from "./component/Cart/Cart"
+
+
+
 
 function App() {
 
@@ -38,6 +42,7 @@ function App() {
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
         <Route  path="/search" component={Search} />
+        <Route exact path="/cart" component={Cart}/>
 
         <ProtectedRoute exact path="/account" component={Profile}/>
         <Route exact path="/login" component={LoginSignUp}/>

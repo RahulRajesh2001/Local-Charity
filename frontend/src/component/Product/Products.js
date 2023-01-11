@@ -70,36 +70,29 @@ useEffect(()=>{
        
       </div>
 
-     
-    
-
-
-
-<div className='paginationBox'>
-<Pagination 
-activePage={currentPage}
-itemsCountPerPage={resultPerPage}
-totalItemsCount={8}
-onChange={setCurrentPageNo}
-nextPageText="Next"
-prevPageText="Prev"
-firstPageText="1st"
-lastPageText="Last"
-itemClass='page-item'
-linkClass='page-link'
-activeClass='pageItemActive'
-activeLinkClass='pageLinkActive'
-
-
-
-/>
-</div>
-</Fragment>}
-
-
-    </Fragment>
-  
-  )
+          
+            <div className="paginationBox">
+              <Pagination
+                activePage={currentPage}
+                itemsCountPerPage={resultPerPage}
+                totalItemsCount={8}
+                onChange={setCurrentPageNo}
+                nextPageText="Next"
+                prevPageText="Prev"
+                firstPageText="1st"
+                lastPageText="Last"
+                itemClass="page-item"
+                linkClass="page-link"
+                activeClass="pageItemActive"
+                activeLinkClass="pageLinkActive"
+              />
+            </div>
+</Fragment>
 }
+</Fragment>
+  
+  )}
 
 export default Products
+
+

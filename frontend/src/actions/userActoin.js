@@ -34,22 +34,23 @@ export const login = (email, password) => async (dispatch) => {
 
 
   //for Register
-export const register = (userData) => async (dispatch) => {
-  try {
-    dispatch({ type: REGISTER_USER_REQUEST });
-
-    const config = { headers: { "Content-Type": "multipart/form-data" } };
-
-    const { data } = await axios.post(`/api/v1/register`, userData, config);
-
-    dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
-  } catch (error) {
-    dispatch({
-      type: REGISTER_USER_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+  export const register = (userData) => async (dispatch) => {
+    try {
+      dispatch({ type: REGISTER_USER_REQUEST });
+  
+      const config = { headers: { "Content-Type": "multipart/form-data" } };
+  
+      const { data } = await axios.post(`/api/v1/register`, userData, config);
+  
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
+    } catch (error) {
+      dispatch({
+        type: REGISTER_USER_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+  
 // Load User
 export const loadUser = () => async (dispatch) => {
   try {
@@ -62,6 +63,7 @@ export const loadUser = () => async (dispatch) => {
     dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.message });
   }
 };
+
 // Logout User
 export const logout = () => async (dispatch) => {
   try {
@@ -72,7 +74,6 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
   }
 };
-
 
 
   // Clearing Errors

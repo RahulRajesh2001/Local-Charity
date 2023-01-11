@@ -1,4 +1,4 @@
-import React ,{Fragment, useEffect} from 'react'
+import React ,{Fragment, useEffect,useState} from 'react'
 import Carousel from "react-material-ui-carousel"
 import "./ProductDetails.css"
 import {useSelector,useDispatch }from "react-redux"
@@ -6,6 +6,7 @@ import { getProductDetails } from '../../actions/productAction'
 import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard.js"
 import Loader from "../layout/Loader/Loader"
+import {addItemsToCart } from "../../actions/cartActions"
 
 
 const ProductDetails = ({match}) => {
@@ -24,6 +25,36 @@ const{product,loading}=useSelector(
     value:product.ratings,
     isHalf:true,
 }
+
+const [quantity,setQuantity]=useState(1)
+
+    const increaseQuantity=()=>{
+      
+        if (product.Stock<=quantity)return;
+
+      const qty=quantity+1;
+      setQuantity(qty)
+    }
+
+const decreaseQuantity=()=>{
+
+  if (1>=quantity)return;
+  
+  const qty=quantity-1;
+  setQuantity(qty)
+
+}
+
+
+const addToCartHandler=()=>{
+
+   dispatch(addItemsToCart(match.params.id,quantity))
+
+  
+  
+}
+
+
 
   useEffect(()=>{
     dispatch(getProductDetails(match.params.id))
@@ -64,11 +95,11 @@ const{product,loading}=useSelector(
             <div className='detailsBlock-3'>
               <div className='detailsBlock-3-1'>
                 <div className='detailsBlock-3-1-1'>
-                  <button>-</button>
-                  <input value="1" type="number"></input>
-                  <button>+</button>
-                </div>{""}
-                <button>To Order</button>
+                  <button onClick={decreaseQuantity}>-</button>
+                  <input readOnly value={quantity} type="number"></input>
+                  <button onClick={increaseQuantity}>+</button>
+                </div>
+                <button onClick={addToCartHandler}>To Order</button>
               </div>
               <p>
                     Status:

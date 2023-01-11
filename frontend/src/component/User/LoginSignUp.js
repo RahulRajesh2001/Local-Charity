@@ -7,7 +7,9 @@ import { login ,register} from "../../actions/userActoin";
 
 
 const LoginSignUp = ({ history, location }) => {
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
+
+
   
 
   const {  loading, isAuthenticated } = useSelector(
@@ -46,8 +48,7 @@ const LoginSignUp = ({ history, location }) => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    dispatch(register(myForm))
-   
+    dispatch(register(myForm));
   };
 
   const registerDataChange = (e) => {
@@ -70,12 +71,12 @@ const LoginSignUp = ({ history, location }) => {
   const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
-  
+    
 
     if (isAuthenticated) {
       history.push(redirect);
     }
-  }, [dispatch,  history, isAuthenticated, redirect]);
+  }, [dispatch, history, isAuthenticated, redirect]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -94,25 +95,24 @@ const LoginSignUp = ({ history, location }) => {
     }
   };
 
-
-
-
   return (
-   <Fragment>
-    {loading?<Loader/>:<div className='LoginSignUpContainer'>
-      <div className='LoginSignUpBox'>
-        <div>
-
-        <div className='login_signUp_toggle'>
-          <p onClick={(e)=>switchTabs(e,"login")}>LOGIN</p>
-          <p onClick={(e)=>switchTabs(e,"register")}>REGISTER</p>
-        </div>
-        <button ref={switcherTab}></button>
-        </div>
-       
-        <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
+    <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+         
+          <div className="LoginSignUpContainer">
+            <div className="LoginSignUpBox">
+              <div>
+                <div className="login_signUp_toggle">
+                  <p onClick={(e) => switchTabs(e, "login")}>LOGIN</p>
+                  <p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
+                </div>
+                <button ref={switcherTab}></button>
+              </div>
+              <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
                 <div className="loginEmail">
-                  
                   <input
                     type="email"
                     placeholder="Email"
@@ -122,19 +122,21 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
                 <div className="loginPassword">
-                 
                   <input
                     type="password"
                     placeholder="Password"
                     required
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
+                    
                   />
+                  
                 </div>
                 <Link to="/password/forgot">Forget Password ?</Link>
                 <input type="submit" value="Login" className="loginBtn" />
               </form>
-
+              
+            
               <form
                 className="signUpForm"
                 ref={registerTab}
@@ -142,7 +144,6 @@ const LoginSignUp = ({ history, location }) => {
                 onSubmit={registerSubmit}
               >
                 <div className="signUpName">
-                  
                   <input
                     type="text"
                     placeholder="Name"
@@ -153,7 +154,6 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
                 <div className="signUpEmail">
-                 
                   <input
                     type="email"
                     placeholder="Email"
@@ -164,7 +164,6 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
                 <div className="signUpPassword">
-                
                   <input
                     type="password"
                     placeholder="Password"
@@ -186,10 +185,12 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
                 <input type="submit" value="Register" className="signUpBtn" />
               </form>
-    </div>
-    </div>}
-   </Fragment>
-  )
-}
+            </div>
+          </div>
+        </Fragment>
+      )}
+    </Fragment>
+  );
+};
 
-export default LoginSignUp
+export default LoginSignUp;
