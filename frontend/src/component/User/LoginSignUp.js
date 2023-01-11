@@ -8,11 +8,7 @@ import { login ,register} from "../../actions/userActoin";
 
 const LoginSignUp = ({ history, location }) => {
 const dispatch = useDispatch();
-
-
-  
-
-  const {  loading, isAuthenticated } = useSelector(
+const {  loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
 

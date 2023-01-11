@@ -9,7 +9,7 @@ import Loader from "../layout/Loader/Loader"
 import {addItemsToCart } from "../../actions/cartActions"
 
 
-const ProductDetails = ({match}) => {
+const ProductDetails = ({match,history}) => {
  
 
   const dispatch=useDispatch();
@@ -49,10 +49,12 @@ const decreaseQuantity=()=>{
 const addToCartHandler=()=>{
 
    dispatch(addItemsToCart(match.params.id,quantity))
+   
+   history.push("/cart")
 
-  
-  
 }
+
+
 
 
 
@@ -99,7 +101,7 @@ const addToCartHandler=()=>{
                   <input readOnly value={quantity} type="number"></input>
                   <button onClick={increaseQuantity}>+</button>
                 </div>
-                <button onClick={addToCartHandler}>To Order</button>
+                <button onClick={addToCartHandler }>To Order</button>
               </div>
               <p>
                     Status:

@@ -7,17 +7,19 @@ import { Link } from "react-router-dom";
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { Typography } from 'react-md';
 
-const Cart = (id) => {
-
-  const dispatch=useDispatch();
-  
+const Cart = ({ history }) => {
+  const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  
- dispatch(addItemsToCart(id))
 
-const deleteCartItems=(id)=>{
-  dispatch(removeItemsFromCart(id))
-}
+
+  const deleteCartItems = (id) => {
+    dispatch(removeItemsFromCart(id));
+  };
+
+  const checkoutHandler = () => {
+    history.push("/login?redirect=shipping");
+  };
+
 
   return (
     <Fragment>
@@ -54,7 +56,7 @@ const deleteCartItems=(id)=>{
                   </div>
                   
                   <div className='checkOutBtn'>
-                    <button>Check Out</button>
+                    <button onClick={checkoutHandler}>Check Out</button>
                   </div>
                 </div>
 
