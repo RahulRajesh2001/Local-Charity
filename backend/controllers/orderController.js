@@ -8,7 +8,6 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   const {
     shippingInfo,
     orderItems,
-  
   } = req.body;
 
   const order = await Order.create({

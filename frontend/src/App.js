@@ -18,7 +18,9 @@ import { useSelector } from 'react-redux';
 import Profile from './component/User/Profile';
 import ProtectedRoute from "./component/Route/ProtectedRoute"
 import Cart from "./component/Cart/Cart"
-import Shipping from "./component/Cart/Shipping.js"
+import Shipping from "./component/Cart/Shipping.js";
+import ConfirmOrder from "./component/Cart/ConfirmOrder"
+import OrderSuccess from "./component/Cart/OrderSuccess"
 
 
 
@@ -49,6 +51,8 @@ function App() {
         <ProtectedRoute exact path="/account" component={Profile}/>
         <Route exact path="/login" component={LoginSignUp}/>
         <ProtectedRoute exact path="/shipping" component={Shipping}/>
+        <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder}/>
+        <ProtectedRoute exact path="/success" component={OrderSuccess}/>
       </Switch>
       <Footer/>
     </Router>
