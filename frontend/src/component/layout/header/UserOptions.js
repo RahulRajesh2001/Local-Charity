@@ -36,13 +36,11 @@ const dispatch=useDispatch();
       icon: <DashboardIcon />,
       name: "Dashboard",
       func: dashboard,
-    });
-  }
+    })
 
-  function dashboard(){
-    history.push("/admin/dashboard")
+    
   }
-
+  
   function createProduct(){
     history.push("/createProduct")
   }
@@ -57,6 +55,12 @@ const dispatch=useDispatch();
   function addToCart(){
     history.push("/cart")
   }
+
+  function dashboard(){
+    history.push("/admin/dashboard")
+  }
+
+
 
   function logoutUser(){
    

@@ -3,10 +3,10 @@ import Carousel from "react-material-ui-carousel"
 import "./ProductDetails.css"
 import {useSelector,useDispatch }from "react-redux"
 import { getProductDetails } from '../../actions/productAction'
-import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard.js"
 import Loader from "../layout/Loader/Loader"
 import {addItemsToCart } from "../../actions/cartActions"
+
 
 
 const ProductDetails = ({match,history}) => {
@@ -22,7 +22,6 @@ const{product,loading}=useSelector(
     color:"rgba(20,20,20,0.1",
     activeColor:"tomato",
     size:window.innerWidth <600 ? 20 : 25,
-    value:product.ratings,
     isHalf:true,
 }
 
@@ -90,10 +89,6 @@ const addToCartHandler=()=>{
               
   
             </div>
-            <div className='detailsBlock-2'>
-              <ReactStars {...options} />
-              <span>({product.numOfReviews } Reviews)</span>
-            </div>
             <div className='detailsBlock-3'>
               <div className='detailsBlock-3-1'>
                 <div className='detailsBlock-3-1-1'>
@@ -114,23 +109,19 @@ const addToCartHandler=()=>{
             <div className='detailsBlock-4'>
                Description:<p>{product.description}</p>
               Catogory:<p>{product.category}</p>
-              {product.donator_details && 
-              product.donator_details.map((user_details)=>(
+              <p className='donatorhead'>Donator Details</p>
+              Name:<p>{product.yourname}</p>
+              Phone Number:<p>{product.phoneNumber}</p>
+              Address:<p>{product.address}</p>
+              Locality:<p>{product.locality}</p>
+              City:<p>{product.city_district_town}</p>
+              Pincode:<p>{product.pincode}</p>
+              State:<p>{product.state}</p>
+              Landmark:<p>{product.landmark}</p>
+             
                 
-            <>
-             <u> <p className='donatorhead'>Donator Details</p></u>
-                Name:<p>{user_details.name}</p>
-                PhoneNumber:<p>{user_details.phoneNumber}</p>
-                Address:<p>{user_details.address}</p>
-                Locality:<p>{user_details.locality}</p>
-                City:<p>{user_details.city_district_town}</p>
-                Pincode:<p>{user_details.pincode}</p>
-                State:<p>{user_details.state}</p>
-                Landmark:<p>{user_details.landmark}</p>
-                Alternative PhoneNumber:<p>{user_details.alternative_phonenumber}</p> 
-
-                </>
-              ))}
+         
+            
 
               
             </div>

@@ -22,7 +22,7 @@
     transition:all 0.5s;
 }
 .banner>a>button:hover{
-    background-color: #DEF5E5;
+    background-color:#DEF5E5 ;
     color:white;
 }
 .homeheading{

@@ -40,6 +40,38 @@ const productSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  yourname: {
+    type: String,
+    required: true,
+  },
+  phoneNumber: {
+    type: Number,
+    required: true,
+  },
+  pincode: {
+    type: Number,
+    required: true,
+  },
+  locality: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  city_district_town: {
+    type: String,
+    required: true,
+  },
+  state: {
+    type: String,
+    required: true,
+  },
+  landmark: {
+    type: String,
+    required: true,
+  },
   reviews: [
     {
       user: {
@@ -49,10 +81,6 @@ const productSchema = mongoose.Schema({
       },
       name: {
         type: String,
-        required: true,
-      },
-      rating: {
-        type: Number,
         required: true,
       },
       comment: {
@@ -72,46 +100,6 @@ const productSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  donator_details: [
-    {
-      name: {
-        type: String,
-        required: true,
-      },
-      phoneNumber: {
-        type: Number,
-        required: true,
-      },
-      pincode: {
-        type: Number,
-        required: true,
-      },
-      locality: {
-        type: String,
-        required: true,
-      },
-      address: {
-        type: String,
-        required: true,
-      },
-      city_district_town: {
-        type: String,
-        required: true,
-      },
-      state: {
-        type: String,
-        required: true,
-      },
-      landmark: {
-        type: String,
-        required: true,
-      },
-      alternative_phonenumber: {
-        type: Number,
-        required: true,
-      },
-    },
-  ],
 });
 
 module.exports = mongoose.model("Product", productSchema);
