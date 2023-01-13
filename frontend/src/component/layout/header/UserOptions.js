@@ -42,7 +42,7 @@ const dispatch=useDispatch();
   }
   
   function createProduct(){
-    history.push("/createProduct")
+    history.push("/user/product/new")
   }
 
   function orders(){

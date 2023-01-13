@@ -11,6 +11,9 @@ import { ALL_PRODUCT_REQUEST
     NEW_PRODUCT_SUCCESS,
     NEW_PRODUCT_RESET,
     NEW_PRODUCT_FAIL,
+    NEW_USERPRODUCT_REQUEST,
+    NEW_USERPRODUCT_SUCCESS,
+    NEW_USERPRODUCT_FAIL,
     CLEAR_ERRORS} from "../constants/productConstants"
 
 export const productReducer = (state = { products: [] }, action) => {
@@ -119,3 +122,34 @@ export const productReducer = (state = { products: [] }, action) => {
             return state;
         }
       };
+
+  //Reducers for creating products for users
+
+  export const newUserProductReducer = (state = { product: {} }, action) => {
+    switch (action.type) {
+      case NEW_USERPRODUCT_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+      case NEW_USERPRODUCT_SUCCESS:
+        return {
+          loading: false,
+          success: action.payload.success,
+          product: action.payload.product,
+        };
+      case NEW_USERPRODUCT_FAIL:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          error: null,
+        };
+      default:
+        return state;
+    }
+  };

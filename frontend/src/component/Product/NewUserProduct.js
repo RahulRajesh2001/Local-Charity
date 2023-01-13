@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
-import "./newProduct.css";
+import "./NewUserProduct.css"
 import { useSelector, useDispatch } from "react-redux";
-import { createProduct} from "../../actions/productAction";
+import { createNewUserProduct} from "../../actions/productAction";
 import Button from '@mui/material/Button';
 import MetaData from "../layout/metadata";
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
@@ -11,10 +11,9 @@ import SpellcheckIcon from '@mui/icons-material/Spellcheck';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import HomeIcon from '@mui/icons-material/Home';
 import PlaceIcon from '@mui/icons-material/Place';
-import Sidebar from "./Sidebar";
 
-const NewProduct = ({ history }) => {
-  const dispatch = useDispatch();
+const NewUserProduct = ({history}) => {
+    const dispatch = useDispatch();
 
 
   const { loading, success } = useSelector((state) => state.newProduct);
@@ -73,7 +72,7 @@ const [landmark, setlandmark] = useState("");
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    dispatch(createProduct(myForm));
+    dispatch(createNewUserProduct(myForm));
   };
 
   const createProductImagesChange = (e) => {
@@ -100,7 +99,6 @@ const [landmark, setlandmark] = useState("");
     <Fragment>
       <MetaData title="Create Product" />
       <div className="dashboard">
-        <Sidebar />
         <div className="newProductContainer">
           <form
             className="createProductForm"
@@ -267,4 +265,4 @@ const [landmark, setlandmark] = useState("");
   );
 };
 
-export default NewProduct;
+export default NewUserProduct

@@ -11,6 +11,9 @@ import { ALL_PRODUCT_REQUEST
     NEW_PRODUCT_REQUEST,
     NEW_PRODUCT_SUCCESS,
     NEW_PRODUCT_FAIL, 
+    NEW_USERPRODUCT_REQUEST,
+    NEW_USERPRODUCT_SUCCESS,
+    NEW_USERPRODUCT_FAIL,
     CLEAR_ERRORS} from "../constants/productConstants"
 
 
@@ -110,6 +113,34 @@ export const getProductDetails = (id) => async (dispatch) => {
         });
       }
     };
+
+//Action for creating new products for users
+
+export const createNewUserProduct = (productData) => async (dispatch) => {
+  try {
+    dispatch({ type: NEW_USERPRODUCT_REQUEST });
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const { data } = await axios.post(
+      `/api/v1/user/product/new`,
+      productData,
+      config
+    );
+
+    dispatch({
+      type: NEW_USERPRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type:NEW_USERPRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
     
     
     //for clearing errors
