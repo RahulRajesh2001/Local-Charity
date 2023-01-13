@@ -40,7 +40,7 @@ const dispatch=useDispatch();
   }
 
   function dashboard(){
-    history.push("/dashboard")
+    history.push("/admin/dashboard")
   }
 
   function createProduct(){

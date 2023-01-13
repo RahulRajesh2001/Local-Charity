@@ -21,6 +21,9 @@ import Cart from "./component/Cart/Cart"
 import Shipping from "./component/Cart/Shipping.js";
 import ConfirmOrder from "./component/Cart/ConfirmOrder"
 import OrderSuccess from "./component/Cart/OrderSuccess"
+import MyOrders from "./component/Order/MyOrders"
+import Dashboard from "./component/Admin/Dashboard"
+import ProductList from "./component/Admin/ProductList"
 
 
 
@@ -53,6 +56,12 @@ function App() {
         <ProtectedRoute exact path="/shipping" component={Shipping}/>
         <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder}/>
         <ProtectedRoute exact path="/success" component={OrderSuccess}/>
+
+        <ProtectedRoute exact path="/orders" component={MyOrders}/>
+        <ProtectedRoute  isAdmin={true} exact path="/admin/dashboard" component={Dashboard}/>
+        <ProtectedRoute  isAdmin={true} exact path="/admin/products" component={ProductList}/>
+
+
       </Switch>
       <Footer/>
     </Router>
