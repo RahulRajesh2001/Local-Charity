@@ -6,7 +6,7 @@ import { getProductDetails } from '../../actions/productAction'
 import ReviewCard from "./ReviewCard.js"
 import Loader from "../layout/Loader/Loader"
 import {addItemsToCart } from "../../actions/cartActions"
-
+import Footer from "../layout/footer/Footer"
 
 
 const ProductDetails = ({match,history}) => {
@@ -144,6 +144,7 @@ const addToCartHandler=()=>{
             ) : (
               <p className="noReviews">No Reviews Yet</p>
             )}
+            <Footer/>
   
       </Fragment>)}
     </Fragment>

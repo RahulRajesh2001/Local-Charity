@@ -6,6 +6,7 @@ import {removeItemsFromCart } from '../../actions/cartActions';
 import { Link } from "react-router-dom";
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { Typography } from 'react-md';
+import Footer from "../layout/footer/Footer"
 
 const Cart = ({ history }) => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Cart = ({ history }) => {
                   <CartItemCard item={item} 
                   deleteCartItems={deleteCartItems} />
             
-                
+           
                 </div>
               ))}
 
@@ -58,11 +59,12 @@ const Cart = ({ history }) => {
                   <div className='checkOutBtn'>
                     <button onClick={checkoutHandler}>Check Out</button>
                   </div>
+                
                 </div>
 
 
-           
-        
+                <Footer/>
+       
     </Fragment>
     )};
     </Fragment>

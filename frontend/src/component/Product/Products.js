@@ -6,6 +6,7 @@ import ProductCard from "../Home/ProductCard"
 import Loader from "../layout/Loader/Loader"
 import Pagination from "react-js-pagination"
 import { Typography } from 'react-md';
+import Footer from "../layout/footer/Footer"
 
 
 const categories = [
@@ -87,6 +88,7 @@ useEffect(()=>{
                 activeLinkClass="pageLinkActive"
               />
             </div>
+            <Footer/>
 </Fragment>
 }
 </Fragment>

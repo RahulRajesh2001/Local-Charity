@@ -4,7 +4,6 @@ import Sidebar from "./Sidebar";
 import { Typography } from 'react-md';
 import MetaData from "../layout/metadata"
 import { Link } from 'react-router-dom';
-import Footer from "../layout/footer/Footer"
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdminProducts } from '../../actions/productAction';
 
@@ -32,7 +31,7 @@ const Dashboard = () => {
 
 return (
   <Fragment>
-  <div className="dashboard">
+    <div className="dashboard">
     <MetaData title="Dashboard - Admin Panel" />
     <Sidebar />
 
@@ -57,10 +56,11 @@ return (
           </Link>
         </div>
       </div>
-
     </div>
+   
   </div>
-  <Footer/>
+ 
+  
   </Fragment>
  
 );

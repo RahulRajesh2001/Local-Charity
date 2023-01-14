@@ -12,11 +12,13 @@ import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import HomeIcon from '@mui/icons-material/Home';
 import PlaceIcon from '@mui/icons-material/Place';
 
+
+
 const NewUserProduct = ({history}) => {
-    const dispatch = useDispatch();
+const dispatch = useDispatch();
+ const { loading, success} = useSelector((state) => state.newProduct);
 
 
-  const { loading, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -42,12 +44,10 @@ const [landmark, setlandmark] = useState("");
   ];
 
   useEffect(() => {
- 
-
-    if (success) {
-      history.push("/admin/dashboard");
-    }
+    
+   
   }, [dispatch, history, success]);
+
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -73,6 +73,7 @@ const [landmark, setlandmark] = useState("");
       myForm.append("images", image);
     });
     dispatch(createNewUserProduct(myForm));
+    history.push("/products");
   };
 
   const createProductImagesChange = (e) => {
@@ -105,7 +106,7 @@ const [landmark, setlandmark] = useState("");
             encType="multipart/form-data"
             onSubmit={createProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Create Donation</h1>
 
             <div>
               <SpellcheckIcon />
@@ -168,7 +169,7 @@ const [landmark, setlandmark] = useState("");
               ))}
             </div>
 
-                  <p className="donatordetails">Details For YOu</p>
+                  <p className="donatordetails">Your Details</p>
 
             <div>
               <SpellcheckIcon />
@@ -261,6 +262,7 @@ const [landmark, setlandmark] = useState("");
           </form>
         </div>
       </div>
+  
     </Fragment>
   );
 };

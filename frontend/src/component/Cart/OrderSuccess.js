@@ -4,6 +4,8 @@ import "./OrderSuccess.css";
 import { Typography } from "react-md";
 import { Link } from "react-router-dom";
 import CheckoutSteps from "./CheckoutSteps";
+import Footer from "../layout/footer/Footer"
+
 
 const OrderSuccess = () => {
   return (<Fragment>
@@ -17,6 +19,7 @@ const OrderSuccess = () => {
       <Typography>Your Order has been Placed successfully </Typography>
       <Link to="/orders">View Orders</Link>
     </div>
+    <Footer/>
   </Fragment>
   
   );

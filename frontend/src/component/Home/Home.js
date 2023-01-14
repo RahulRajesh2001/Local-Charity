@@ -5,8 +5,8 @@ import ProductCard from "./ProductCard"
 import MetaData from '../layout/metadata'
 import {getProduct} from "../../actions/productAction"
 import{useSelector,useDispatch} from "react-redux";
-import Loader from '../layout/Loader/Loader'
-
+import Loader from '../layout/Loader/Loader';
+import Footer from "../layout/footer/Footer"
 
 const Home = () => {
 
@@ -43,8 +43,9 @@ const Home = () => {
 {products && products.map(product=>(<ProductCard product={product}/>))}
  
 </div>
-
+  <Footer/>
  </Fragment>
+
       }
     </Fragment>
 

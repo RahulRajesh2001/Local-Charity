@@ -3,7 +3,6 @@ import './App.css';
 import React from 'react'
 import Header from './component/layout/header/Header';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import Footer from './component/layout/footer/Footer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./component/Home/Home.js"
 import ProductDetails from "./component/Product/ProductDetails"
@@ -63,10 +62,9 @@ function App() {
         <ProtectedRoute  isAdmin={true} exact path="/admin/products" component={ProductList}/>
         <ProtectedRoute  isAdmin={true} exact path="/admin/product/new" component={NewProduct}/>
 
-        <ProtectedRoute  exact path="/user/product/new" component={NewUserProduct}/>
+        <ProtectedRoute exact path="/user/product/new" component={NewUserProduct}/>
 
       </Switch>
-      <Footer/>
     </Router>
      
   )

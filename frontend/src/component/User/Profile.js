@@ -5,6 +5,7 @@ import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
 
+
 const Profile = ({ history }) => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
 
@@ -18,9 +19,12 @@ const Profile = ({ history }) => {
       {loading ? (
         <Loader />
       ) : (
-        <Fragment>
+        
+
+          <Fragment>
           <MetaData title={`${user.name}'s Profile`} />
           <div className="profileContainer">
+          
             <div>
               <h1>My Profile</h1>
               <img src={user.avatar.url} alt={user.name} />
@@ -45,9 +49,13 @@ const Profile = ({ history }) => {
                 <Link to="/password/update">Change Password</Link>
               </div>
             </div>
-          </div>
+            </div>
+
+       
+         
         </Fragment>
       )}
+   
     </Fragment>
   );
 };

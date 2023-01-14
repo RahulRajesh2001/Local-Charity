@@ -48,7 +48,9 @@ const CheckoutSteps = ({ activeStep }) => {
           </Step>
         ))}
       </Stepper>
+     
     </Fragment>
+     
   );
 };
 

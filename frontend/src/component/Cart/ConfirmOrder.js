@@ -6,8 +6,7 @@ import "./ConfirmOrder.css";
 import { Link } from 'react-md';
 import { Typography } from 'react-md';
 import { createOrder } from '../../actions/orderActions';
-
-
+import Footer from "../layout/footer/Footer"
 
 
 const ConfirmOrder = ({history}) => {
@@ -95,7 +94,7 @@ const ConfirmOrder = ({history}) => {
           </div>
           
         
-      
+      <Footer/>
     </Fragment>
   )
 }
