@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import "./ProductList.css"
 import {useSelector, useDispatch} from "react-redux";
-import {getAdminProducts} from "../../actions/productAction";
+import {getAdminProducts,deleteProduct} from "../../actions/productAction";
 import {Link} from "react-router-dom";
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
@@ -11,21 +10,29 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Sidebar from './Sidebar';
 import { Fragment } from 'react';
 import MetaData from "../layout/metadata";
-import Footer from '../layout/footer/Footer'
 
 
 
 
 
-const ProductList = () => {
+
+const ProductList = ({history}) => {
   const dispatch=useDispatch();
 
-  const {products}=useSelector((state)=>state.products)
+  const {products,isDeleted}=useSelector((state)=>state.products)
+
+  const deleteProductHandler=(id)=>{
+
+    dispatch(deleteProduct(id));
+    history.push("/admin/dashboard")
+  }
 
   useEffect(()=>{
 
+  
+
    dispatch (getAdminProducts())
-  },dispatch)
+  },[dispatch,isDeleted,history])
 
   
 const columns = [
@@ -57,9 +64,13 @@ const columns = [
             <EditIcon />
           </Link>
 
-        <Button>
-          <DeleteIcon/>
-        </Button>
+          <Button
+              onClick={() =>
+                deleteProductHandler(params.getValue(params.id, "id"))
+              }
+            >
+              <DeleteIcon />
+            </Button>
         </Fragment>
       
 
@@ -85,7 +96,7 @@ products.forEach((item) => {
 
   return (
 <Fragment>
-<MetaData title={`ALL PRODUCTS - Admin`} />
+<MetaData title={"All admin products"} />
 
 <div className="dashboard">
   <Sidebar/>
