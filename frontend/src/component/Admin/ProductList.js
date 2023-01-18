@@ -19,7 +19,9 @@ import MetaData from "../layout/metadata";
 const ProductList = ({history}) => {
   const dispatch=useDispatch();
 
-  const {products,isDeleted}=useSelector((state)=>state.products)
+  const {products}=useSelector((state)=>state.products)
+  
+  const {isDeleted,isUpdated}=useSelector((state)=>state.product)
 
   const deleteProductHandler=(id)=>{
 
@@ -32,7 +34,7 @@ const ProductList = ({history}) => {
   
 
    dispatch (getAdminProducts())
-  },[dispatch,isDeleted,history])
+  },[dispatch,isDeleted,history,isUpdated])
 
   
 const columns = [

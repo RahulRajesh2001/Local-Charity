@@ -6,9 +6,18 @@ import { newProductReducer,
         productDetailsReducer, 
         productsReducer,
         productReducer } from "./reducers/productReducer";
+
+
 import { userReducer } from "./reducers/userReducer";
 import { cartReducer } from "./reducers/cartReducer";
-import {myOrdersReducer, newOrderReducer} from "./reducers/orderReducer";
+
+
+import {allOrdersReducer,
+     myOrdersReducer,
+      newOrderReducer, 
+      orderReducer} from "./reducers/orderReducer";
+
+
 
 const reducer=combineReducers({
     products:productsReducer,
@@ -19,7 +28,9 @@ const reducer=combineReducers({
     myOrder:myOrdersReducer,
     newProduct:newProductReducer,
     newUserProduct:newUserProductReducer,
-    product:productReducer
+    product:productReducer,
+    allOrders:allOrdersReducer,
+    order:orderReducer,
 
 });
 

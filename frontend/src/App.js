@@ -26,6 +26,8 @@ import ProductList from "./component/Admin/ProductList"
 //import NewProduct from './component/Admin/NewProduct';
 import NewUserProduct from "./component/Product/NewUserProduct"
 import UpdateProduct from "./component/Admin/UpdateProduct";
+import OrderList from "./component/Admin/OrderList"
+
 
 function App() {
 
@@ -61,9 +63,10 @@ function App() {
         <ProtectedRoute  isAdmin={true} exact path="/admin/dashboard" component={Dashboard}/>
         <ProtectedRoute  isAdmin={true} exact path="/admin/products" component={ProductList}/>
         <ProtectedRoute  isAdmin={true} exact path="/admin/product/:id" component={UpdateProduct}/>
+        <ProtectedRoute  isAdmin={true} exact path="/admin/orders" component={OrderList}/>
       
-
-
+        
+        
         <ProtectedRoute exact path="/user/product/new" component={NewUserProduct}/>
 
       </Switch>
