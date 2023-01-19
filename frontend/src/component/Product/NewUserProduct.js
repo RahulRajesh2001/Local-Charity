@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import "./NewUserProduct.css"
+import "../Product/NewUserProduct.css"
 import { useSelector, useDispatch } from "react-redux";
 import { createNewUserProduct} from "../../actions/productAction";
 import Button from '@mui/material/Button';
@@ -11,12 +11,13 @@ import SpellcheckIcon from '@mui/icons-material/Spellcheck';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import HomeIcon from '@mui/icons-material/Home';
 import PlaceIcon from '@mui/icons-material/Place';
+import Sidebar from "../Admin/Sidebar"
 
 
 
 const NewUserProduct = ({history}) => {
 const dispatch = useDispatch();
- const { loading, success} = useSelector((state) => state.newProduct);
+ const { loading, success} = useSelector((state) => state.newUserProduct);
 
 
 
@@ -44,6 +45,7 @@ const [landmark, setlandmark] = useState("");
   ];
 
   useEffect(() => {
+   
     
    
   }, [dispatch, history, success]);
@@ -51,6 +53,7 @@ const [landmark, setlandmark] = useState("");
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
+    history.push("/products");
 
     const myForm = new FormData();
 
@@ -73,7 +76,7 @@ const [landmark, setlandmark] = useState("");
       myForm.append("images", image);
     });
     dispatch(createNewUserProduct(myForm));
-    history.push("/products");
+    
   };
 
   const createProductImagesChange = (e) => {
@@ -98,8 +101,10 @@ const [landmark, setlandmark] = useState("");
 
   return (
     <Fragment>
+      
       <MetaData title="Create Product" />
       <div className="dashboard">
+      <Sidebar/>
         <div className="newProductContainer">
           <form
             className="createProductForm"

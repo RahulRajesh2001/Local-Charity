@@ -138,7 +138,7 @@ export const createNewUserProduct = (productData) => async (dispatch) => {
 
     dispatch({
       type: NEW_USERPRODUCT_SUCCESS,
-      payload: data,
+      payload: data.success,
     });
   } catch (error) {
     dispatch({

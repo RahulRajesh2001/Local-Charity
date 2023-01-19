@@ -13,22 +13,19 @@ import PlaceIcon from '@mui/icons-material/Place';
 import Sidebar from "./Sidebar";
 import {UPDATE_PRODUCT_RESET} from "../../constants/productConstants"
 
-const UpdateProduct= ({ history,match }) => {
+const UpdateProduct= ({ history, match }) => {
   const dispatch = useDispatch();
 
-  const { product} = useSelector((state) => state.productDetails);
-  const {
-    loading,
-    isUpdated,
-  } = useSelector((state) => state.product);
+  const { product} = useSelector((state) => state.productsDetails);
+  const {loading,isUpdated,} = useSelector((state) => state.product);
 
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [Stock, setStock] = useState(0);
-  const [images, setImages] = useState([]);
-  const [oldImages,setOldImages]=useState([])
-  const [imagesPreview, setImagesPreview] = useState([]);
+  const [name, setname] = useState("");
+  const [description, setdescription] = useState("");
+  const [category, setcategory] = useState("");
+  const [Stock, setstock] = useState(0);
+  const [images, setimages] = useState([]);
+  const [oldImages,setoldImages]=useState([])
+  const [imagesPreview, setimagespreview] = useState([]);
 
 //for donator details
 const [yourname, setyourname] = useState("");
@@ -46,17 +43,18 @@ const [landmark, setlandmark] = useState("");
    "Books"
   ];
 
-  const productId = match.params.id;
+  const productId = match.params._id;
 
   useEffect(() => {
     if (product && product._id !== productId) {
       dispatch(getProductDetails(productId));
     } else {
-      setName(product.name);
-      setDescription(product.description);
-      setCategory(product.category);
-      setStock(product.Stock);
-      setOldImages(product.images);
+
+      setname(product.name);
+      setdescription(product.description);
+      setcategory(product.category);
+      setstock(product.Stock);
+      setoldImages(product.images);
       setyourname(product.yourname)
       setphoneNumber(product.phoneNumber)
       setaddress(product.address)
@@ -82,7 +80,7 @@ const updateProductSubmitHandler = (e) => {
     myForm.set("name", name);
     myForm.set("description", description);
     myForm.set("category", category);
-    myForm.set("Stock", Stock);
+    myForm.set("stock", Stock);
 
     myForm.set("yourname", yourname);
     myForm.set("phoneNumber", phoneNumber);
@@ -103,17 +101,17 @@ const updateProductSubmitHandler = (e) => {
   const updateProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
-    setImages([]);
-    setImagesPreview([]);
-    setOldImages([]);
+    setimages([]);
+    setimagespreview([]);
+    setoldImages([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
 
       reader.onload = () => {
         if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
+          setimagespreview((old) => [...old, reader.result]);
+          setimages((old) => [...old, reader.result]);
         }
       };
 
@@ -132,18 +130,18 @@ const updateProductSubmitHandler = (e) => {
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler }
           >
-            <h1>Create Product</h1>
+            <h1>Update Product</h1>
 
-            <div>
-              <SpellcheckIcon />
+           <div>
+             <SpellcheckIcon />
               <input
                 type="text"
                 placeholder="Product Name"
                 required
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setname(e.target.value)}
               />
-            </div>
+            </div> 
 
             <div>
               <DescriptionIcon />
@@ -151,7 +149,7 @@ const updateProductSubmitHandler = (e) => {
               <textarea
                 placeholder="Product Description"
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={(e) => setdescription(e.target.value)}
                 cols="30"
                 rows="1"
               ></textarea>
@@ -159,7 +157,7 @@ const updateProductSubmitHandler = (e) => {
 
             <div>
               <AccountTreeIcon />
-              <select onChange={(e) => setCategory(e.target.value)}>
+              <select onChange={(e) => setcategory(e.target.value)}>
                 <option value="">Choose Category</option>
                 {categories.map((cate) => (
                   <option key={cate} value={cate}>
@@ -175,7 +173,7 @@ const updateProductSubmitHandler = (e) => {
                 type="number"
                 placeholder="Stock"
                 required
-                onChange={(e) => setStock(e.target.value)}
+                onChange={(e) => setstock(e.target.value)}
               />
             </div>
 

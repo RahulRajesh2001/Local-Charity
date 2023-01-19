@@ -23,7 +23,6 @@ import OrderSuccess from "./component/Cart/OrderSuccess"
 import MyOrders from "./component/Order/MyOrders"
 import Dashboard from "./component/Admin/Dashboard"
 import ProductList from "./component/Admin/ProductList"
-//import NewProduct from './component/Admin/NewProduct';
 import NewUserProduct from "./component/Product/NewUserProduct"
 import UpdateProduct from "./component/Admin/UpdateProduct";
 import OrderList from "./component/Admin/OrderList"
