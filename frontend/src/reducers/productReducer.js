@@ -7,10 +7,6 @@ import { ALL_PRODUCT_REQUEST
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL, 
-    NEW_PRODUCT_REQUEST,
-    NEW_PRODUCT_SUCCESS,
-    NEW_PRODUCT_RESET,
-    NEW_PRODUCT_FAIL,
     NEW_USERPRODUCT_REQUEST,
     NEW_USERPRODUCT_SUCCESS,
     NEW_USERPRODUCT_FAIL,
@@ -19,9 +15,9 @@ import { ALL_PRODUCT_REQUEST
     DELETE_PRODUCT_RESET,
     DELETE_PRODUCT_FAIL,
     UPDATE_PRODUCT_REQUEST,
-  UPDATE_PRODUCT_SUCCESS,
-  UPDATE_PRODUCT_FAIL,
-  UPDATE_PRODUCT_RESET,
+    UPDATE_PRODUCT_SUCCESS,
+    UPDATE_PRODUCT_FAIL,
+    UPDATE_PRODUCT_RESET,
     CLEAR_ERRORS} from "../constants/productConstants"
 
 export const productsReducer = (state = { products: [] }, action) => {
@@ -97,40 +93,6 @@ export const productsReducer = (state = { products: [] }, action) => {
           
       };
 
-      export const newProductReducer = (state = { product: {} }, action) => {
-        switch (action.type) {
-          case NEW_PRODUCT_REQUEST:
-            return {
-              ...state,
-              loading: true,
-            };
-          case NEW_PRODUCT_SUCCESS:
-            return {
-              loading: false,
-             
-              product: action.payload.product,
-              success:true,
-            };
-          case NEW_PRODUCT_FAIL:
-            return {
-              ...state,
-              loading: false,
-              error: action.payload,
-            };
-          case NEW_PRODUCT_RESET:
-            return {
-              ...state,
-              success: false,
-            };
-          case CLEAR_ERRORS:
-            return {
-              ...state,
-              error: null,
-            };
-          default:
-            return state;
-        }
-      };
 
   //Reducers for creating products for users
 

@@ -17,7 +17,7 @@ const UpdateProduct= ({ history, match }) => {
   const dispatch = useDispatch();
 
   const { product} = useSelector((state) => state.productsDetails);
-  const {loading,isUpdated,} = useSelector((state) => state.product);
+  const {loading,isUpdated} = useSelector((state) => state.product);
 
   const [name, setname] = useState("");
   const [description, setdescription] = useState("");
@@ -28,6 +28,8 @@ const UpdateProduct= ({ history, match }) => {
   const [imagesPreview, setimagespreview] = useState([]);
 
 //for donator details
+
+
 const [yourname, setyourname] = useState("");
 const [phoneNumber, setphoneNumber] = useState();
 const [address, setaddress] = useState("");
@@ -43,7 +45,7 @@ const [landmark, setlandmark] = useState("");
    "Books"
   ];
 
-  const productId = match.params._id;
+  const productId = match.params.id;
 
   useEffect(() => {
     if (product && product._id !== productId) {
@@ -67,13 +69,15 @@ const [landmark, setlandmark] = useState("");
    
 
     if (isUpdated) {
-      history.push("/admin/products");
+     
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [dispatch,history,isUpdated,productId,product]);
 
 const updateProductSubmitHandler = (e) => {
     e.preventDefault();
+
+    history.push("/admin/products");
 
     const myForm = new FormData();
 

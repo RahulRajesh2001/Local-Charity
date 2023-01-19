@@ -8,9 +8,6 @@ import { ALL_PRODUCT_REQUEST
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
-    NEW_PRODUCT_REQUEST,
-    NEW_PRODUCT_SUCCESS,
-    NEW_PRODUCT_FAIL, 
     NEW_USERPRODUCT_REQUEST,
     NEW_USERPRODUCT_SUCCESS,
     NEW_USERPRODUCT_FAIL,
@@ -92,34 +89,8 @@ export const getProductDetails = (id) => async (dispatch) => {
       });
     }
   };
-    //action for creating product
-    
-    export const createProduct = (productData) => async (dispatch) => {
-      try {
-        dispatch({ type: NEW_PRODUCT_REQUEST });
-    
-        const config = {
-          headers: { "Content-Type": "application/json" },
-        };
-    
-        const { data } = await axios.post(
-          `/api/v1/admin/product/new`,
-          productData,
-          config
-        );
-    
-        dispatch({
-          type: NEW_PRODUCT_SUCCESS,
-          payload: data,
-        });
-      } catch (error) {
-        dispatch({
-          type: NEW_PRODUCT_FAIL,
-          payload: error.response.data.message,
-        });
-      }
-    };
 
+  
 //Action for creating new products for users
 
 export const createNewUserProduct = (productData) => async (dispatch) => {
@@ -149,7 +120,7 @@ export const createNewUserProduct = (productData) => async (dispatch) => {
 };
 
 
-// Update Product
+// Update Product 
 export const updateProduct = (id, productData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
@@ -158,9 +129,8 @@ export const updateProduct = (id, productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
-      `/api/v1/admin/product/${id}`,
-      productData,
+    const { data } = await axios.put( `/api/v1/admin/product/${id}`,
+    productData,
       config
     );
 
