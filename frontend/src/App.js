@@ -10,7 +10,7 @@ import Products from "./component/Product/Products"
 import Search from "./component/Product/Search"
 import LoginSignUp from './component/User/LoginSignUp';
 import store from "./store"
-import { loadUser } from './actions/userActoin';
+import { loadUser, updateUser } from './actions/userActoin';
 import { useEffect } from 'react';
 import UserOptions from "./component/layout/header/UserOptions"
 import { useSelector } from 'react-redux';
@@ -27,7 +27,8 @@ import NewUserProduct from "./component/Product/NewUserProduct"
 import UpdateProduct from "./component/Admin/UpdateProduct";
 import OrderList from "./component/Admin/OrderList";
 import OrderDetails from "./component/Admin/OrderDetails"
-import UsersList from "./component/Admin/UsersList"
+import UsersList from "./component/Admin/UsersList";
+import UpdateUser from "./component/Admin/UpdateUser";
 
 
 function App() {
@@ -67,7 +68,9 @@ function App() {
         <ProtectedRoute  isAdmin={true} exact path="/admin/orders" component={OrderList}/>
         <ProtectedRoute  isAdmin={true} exact path="/admin/order/:id" component={OrderDetails}/>
         <ProtectedRoute  isAdmin={true} exact path="/admin/users" component={UsersList}/>
-        
+        <ProtectedRoute  isAdmin={true} exact path="/admin/user/:id" component={UpdateUser}/>
+
+
         <ProtectedRoute exact path="/user/product/new" component={NewUserProduct}/>
 
       </Switch>
