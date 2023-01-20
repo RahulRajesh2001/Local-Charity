@@ -19,6 +19,24 @@
   text-align: center;
 
 }
+.orderDetailsContainerBox {
+  margin: 2vmax;
+}
+
+.orderDetailsContainerBox> div {
+  display: flex;
+  margin: 1vmax 0;
+}
+
+.orderDetailsContainerBox > div > p {
+  font: 400 1vmax "Roboto";
+  color: black;
+}
+.orderDetailsContainerBox > div > span {
+  margin: 0 1vmax;
+  font: 100 1vmax "Roboto";
+  color: #575757;
+}
   
   @media screen and (max-width: 600px) {
     .updateOrderForm {

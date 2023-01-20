@@ -6,7 +6,8 @@ import MetaData from "../layout/metadata"
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdminProducts } from '../../actions/productAction';
-
+import {getAllOrders} from "../../actions/orderActions"
+import {getAllUsers} from "../../actions/userActoin"
 
 
 const Dashboard = () => {
@@ -14,6 +15,11 @@ const Dashboard = () => {
   const dispatch=useDispatch()
 
   const {products}=useSelector((state)=>state.products)
+
+
+  const {orders}=useSelector((state)=>state.allOrders)
+
+  const {users}=useSelector((state)=>state.allUsers)
 
   let outOfStock = 0;
 
@@ -27,6 +33,8 @@ const Dashboard = () => {
 
   useEffect(()=>{
     dispatch(getAdminProducts())
+    dispatch(getAllOrders())
+    dispatch(getAllUsers())
   },[dispatch])
 
 return (
@@ -48,11 +56,11 @@ return (
           </Link>
           <Link to="/admin/orders">
             <p>Orders</p>
-            <p>33</p>
+            <p>{orders && orders.length}</p>
           </Link>
           <Link to="/admin/users">
             <p>Users</p>
-            <p>77</p>
+            <p>{ users && users.length}</p>
           </Link>
         </div>
       </div>
