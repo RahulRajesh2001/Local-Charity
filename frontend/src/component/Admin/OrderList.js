@@ -1,116 +1,121 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
-import "./ProductList.css";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import "./ProductList.css"
+import {useSelector, useDispatch} from "react-redux";
+import {getAllOrders,deleteOrder} from "../../actions/orderActions";
+import {Link} from "react-router-dom";
 import Button from '@mui/material/Button';
-import MetaData from "../layout/metadata";
-import EditIcon from '@mui/icons-material/Edit';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import DeleteIcon from '@mui/icons-material/Delete';
-import SideBar from "./Sidebar";
-import {
-  deleteOrder,
-  getAllOrders,
-
-} from "../../actions/orderActions";
-import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
-
-const OrderList = ({ history }) => {
-  const dispatch = useDispatch();
+import Sidebar from './Sidebar';
+import { Fragment } from 'react';
+import MetaData from "../layout/metadata";
 
 
-  const { orders } = useSelector((state) => state.allOrders);
 
-  const {isDeleted } = useSelector((state) => state.order);
 
-  const deleteOrderHandler = (id) => {
+
+
+const OrderList = ({history}) => {
+  const dispatch=useDispatch();
+
+  const {orders}=useSelector((state)=>state.allOrders)
+  
+
+  const deleteOrderHandler=(id)=>{
+
     dispatch(deleteOrder(id));
-  };
+    history.push("/admin/dashboard")
+  }
 
-  useEffect(() => {
-    
-
-    if (isDeleted) {
-      history.push("/admin/orders");
-      dispatch({ type: DELETE_ORDER_RESET });
-    }
-
-    dispatch(getAllOrders());
-  }, [dispatch,history, isDeleted]);
-
-  const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 1 },
+  useEffect(()=>{
 
   
-    {
-      field: "itemsQty",
-      headerName: "Items Qty",
-      type: "number",
-      minWidth: 150,
-      flex: 0.4,
-    },
 
-    {
-      field: "actions",
-      flex: 0.3,
-      headerName: "Actions",
-      minWidth: 150,
-      type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <Fragment>
+   dispatch (getAllOrders())
+  },[dispatch,history])
+
+  
+const columns = [
+  { field: 'id', headerName: 'Product_ID', width: 220 },
+  {
+    field: 'Name',
+    headerName: 'Product Name',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'actions',
+    headerName: 'Actions',
+    sortable: false,
+    width: 150,
+    renderCell:  (params) =>
+     {
+      return (
+        <Fragment>
             <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
-              <EditIcon />
-            </Link>
+            <MenuOpenIcon />
+          </Link>
 
-            <Button
+          <Button
               onClick={() =>
                 deleteOrderHandler(params.getValue(params.id, "id"))
               }
             >
               <DeleteIcon />
             </Button>
-          </Fragment>
-        );
-      },
+        </Fragment>
+      
+
+       
+      );
     },
-  ];
+  },
+];
 
-  const rows = [];
+const rows = [];
 
-  orders &&
-    orders.forEach((item) => {
-      rows.push({
-        id: item._id,
-        itemsQty: item.orderItems.length,
-      });
-    });
+
+orders &&
+orders.forEach((item) => {
+  rows.push({
+    id: item._id,
+    Name:item.name
+   
+  });
+});
 
   return (
-    <Fragment>
-      <MetaData title={`ALL ORDERS - Admin`} />
+<Fragment>
+<MetaData title={"All Orders"} />
 
-      <div className="dashboard">
-        <SideBar />
-        <div className="productListContainer">
-          <h1 id="productListHeading">ALL ORDERS</h1>
+<div className="dashboard">
+  <Sidebar/>
+  
+  <div className="productListContainer">
+    <h1 id="productListHeading">All Products</h1>
 
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-          />
-        </div>
-      </div>
-    </Fragment>
-  );
-};
+   
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[5]}
+        disableSelectionOnClick
+      className='productListTable'
+        autoHeight
+        experimentalFeatures={{ newEditingApi: true }}
+
+      />
+
+
+  </div>
+  
+</div>
+</Fragment>
+
+
+  )
+}
 
 export default OrderList;
-
-
-
