@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
-import "./ProductList.css"
+import "./productReviews.css"
 import {useSelector, useDispatch} from "react-redux";
-import {getAllOrders,deleteOrder} from "../../actions/orderActions";
-import {Link} from "react-router-dom";
+import {getAllReviews,deleteReviews} from "../../actions/productAction";
 import Button from '@mui/material/Button';
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Sidebar from './Sidebar';
 import { Fragment } from 'react';
@@ -16,31 +14,45 @@ import MetaData from "../layout/metadata";
 
 
 
-const OrderList = ({history}) => {
+const ProductReviews = ({history}) => {
   const dispatch=useDispatch();
 
-  const {orders}=useSelector((state)=>state.allOrders)
   
+  const {reviews}=useSelector((state)=>state.productReviews)
 
-  const deleteOrderHandler=(id)=>{
+  const deleteProductHandler=(id)=>{
 
-    dispatch(deleteOrder(id));
-    history.push("/admin/dashboard")
+    //dispatch(deleteProduct(id));
+    
   }
 
   useEffect(()=>{
 
-  
+    history.push("/admin/reviews")
 
-   dispatch (getAllOrders())
+   dispatch (getAllReviews())
   },[dispatch,history])
 
   
 const columns = [
   { field: 'id', headerName: 'Product_ID', width: 220 },
   {
-    field: 'Name',
+    field: 'name',
+    headerName: 'Name',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'product_name',
     headerName: 'Product Name',
+    width: 150,
+    editable: true,
+  },
+ 
+  {
+    field: 'comment',
+    headerName: 'Comment',
+    type: 'number',
     width: 150,
     editable: true,
   },
@@ -53,13 +65,10 @@ const columns = [
      {
       return (
         <Fragment>
-            <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
-            <MenuOpenIcon />
-          </Link>
 
           <Button
               onClick={() =>
-                deleteOrderHandler(params.getValue(params.id, "id"))
+                deleteProductHandler(params.getValue(params.id, "id"))
               }
             >
               <DeleteIcon />
@@ -76,24 +85,26 @@ const columns = [
 const rows = [];
 
 
-orders &&
-orders.forEach((item) => {
+reviews &&
+reviews.forEach((item) => {
   rows.push({
     id: item._id,
-    Name:item.name
-   
+    stock: item.Stock,
+    price: item.price,
+    name: item.name,
   });
 });
 
+
   return (
 <Fragment>
-<MetaData title={"All Orders"} />
+<MetaData title={"All Reviews"} />
 
 <div className="dashboard">
   <Sidebar/>
   
   <div className="productListContainer">
-    <h1 id="productListHeading">All Orders</h1>
+    <h1 id="productListHeading">All Reviews</h1>
 
    
       <DataGrid
@@ -118,4 +129,5 @@ orders.forEach((item) => {
   )
 }
 
-export default OrderList;
+
+export default ProductReviews

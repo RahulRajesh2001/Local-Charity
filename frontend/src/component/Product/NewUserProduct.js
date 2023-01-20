@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import "../Product/NewUserProduct.css"
+import "./NewUserProduct.css"
 import { useSelector, useDispatch } from "react-redux";
 import { createNewUserProduct} from "../../actions/productAction";
 import Button from '@mui/material/Button';
