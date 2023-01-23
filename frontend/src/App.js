@@ -29,7 +29,8 @@ import OrderList from "./component/Admin/OrderList";
 import OrderDetails from "./component/Admin/OrderDetails"
 import UsersList from "./component/Admin/UsersList";
 import UpdateUser from "./component/Admin/UpdateUser";
-import ProductReviews from "./component/Admin/ProductReviews"
+import ProductReviews from "./component/Admin/ProductReviews";
+import UpdateProfile from "./component/User/UpdateProfile"
 
 
 function App() {
@@ -71,7 +72,7 @@ function App() {
         <ProtectedRoute  isAdmin={true} exact path="/admin/users" component={UsersList}/>
         <ProtectedRoute  isAdmin={true} exact path="/admin/user/:id" component={UpdateUser}/>
         <ProtectedRoute  isAdmin={true} exact path="/admin/reviews" component={ProductReviews}/>
-
+         <ProtectedRoute exact path="/me/update" component={UpdateProfile}/>
 
         <ProtectedRoute exact path="/user/product/new" component={NewUserProduct}/>
 
