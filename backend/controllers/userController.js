@@ -79,7 +79,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("User not found", 404));
   }
 
-  // Get ResetPassword Token
+  // get ResetPassword Token
   const resetToken = user.getResetPasswordToken();
 
   await user.save({ validateBeforeSave: false });
@@ -93,7 +93,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   try {
     await sendEmail({
       email: user.email,
-      subject: `Ecommerce Password Recovery`,
+      subject: `Local Charity Password Recovery`,
       message,
     });
 
@@ -110,6 +110,8 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(error.message, 500));
   }
 });
+
+
 
 // Reset Password
 exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
@@ -145,6 +147,8 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 
   sendToken(user, 200, res);
 });
+
+
 
 // Get User Detail
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {

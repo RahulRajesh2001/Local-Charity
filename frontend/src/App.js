@@ -32,6 +32,8 @@ import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import UpdateProfile from "./component/User/UpdateProfile";
 import UpdatePassword from './component/User/UpdatePassword';
+import ForgotPassword from "./component/User/ForgotPassword"
+import ResetPassword from "./component/User/ResetPassword";
 
 
 function App() {
@@ -75,7 +77,8 @@ function App() {
         <ProtectedRoute  isAdmin={true} exact path="/admin/reviews" component={ProductReviews}/>
         <ProtectedRoute exact path="/me/update" component={UpdateProfile}/>
         <ProtectedRoute exact path="/password/update" component={UpdatePassword}/>
-
+        <Route exact path="/password/forgot" component={ForgotPassword}/>
+        <Route exact path="/password/reset/:token" component={ResetPassword}/>
 
 
 
