@@ -34,6 +34,8 @@ import UpdateProfile from "./component/User/UpdateProfile";
 import UpdatePassword from './component/User/UpdatePassword';
 import ForgotPassword from "./component/User/ForgotPassword"
 import ResetPassword from "./component/User/ResetPassword";
+import MyOrderDetails from "./component/Order/MyOrderDetails";
+
 
 
 function App() {
@@ -79,7 +81,7 @@ function App() {
         <ProtectedRoute exact path="/password/update" component={UpdatePassword}/>
         <Route exact path="/password/forgot" component={ForgotPassword}/>
         <Route exact path="/password/reset/:token" component={ResetPassword}/>
-
+        <ProtectedRoute exact path="/order/:id" component={MyOrderDetails}/>
 
 
         <ProtectedRoute exact path="/user/product/new" component={NewUserProduct}/>

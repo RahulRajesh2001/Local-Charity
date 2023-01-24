@@ -31,6 +31,14 @@ const MyOrders = () => {
         minWidth: 150,
         flex: 0.3,
       },
+      {
+        field: "product",
+        headerName: "Product Name",
+        type: "number",
+        minWidth: 150,
+        flex: 0.3,
+      },
+  
   
     
   
