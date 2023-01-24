@@ -7,7 +7,8 @@ import {
         productsReducer,
         productReducer, 
         productReviewsReducer,
-        reviewReducer} from "./reducers/productReducer";
+        reviewReducer,
+        newReviewReducer} from "./reducers/productReducer";
 
 
 import { allUsersReducer, forgotPasswordReducer, profileReducer, userDetailsReducer, userReducer } from "./reducers/userReducer";
@@ -42,6 +43,7 @@ const reducer=combineReducers({
     review: reviewReducer,
     forgotPassword: forgotPasswordReducer,
     myOrderDetails:myOrderDetailsReducer,
+    newReview: newReviewReducer,
 });
 
 let initialState={

@@ -2,11 +2,17 @@ import React ,{Fragment, useEffect,useState} from 'react'
 import Carousel from "react-material-ui-carousel"
 import "./ProductDetails.css"
 import {useSelector,useDispatch }from "react-redux"
-import { getProductDetails } from '../../actions/productAction'
+import { getProductDetails, newReview } from '../../actions/productAction'
 import ReviewCard from "./ReviewCard.js"
 import Loader from "../layout/Loader/Loader"
 import {addItemsToCart } from "../../actions/cartActions"
-import Footer from "../layout/footer/Footer"
+import Footer from "../layout/footer/Footer";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import { NEW_REVIEW_RESET } from '../../constants/productConstants'
 
 
 const ProductDetails = ({match,history}) => {
@@ -14,18 +20,14 @@ const ProductDetails = ({match,history}) => {
 
   const dispatch=useDispatch();
 
-const{product,loading}=useSelector(
-  (state)=>state.productsDetails)
+const{product,loading}=useSelector((state)=>state.productsDetails)
 
-  const options={
-    edit:false,
-    color:"rgba(20,20,20,0.1",
-    activeColor:"tomato",
-    size:window.innerWidth <600 ? 20 : 25,
-    isHalf:true,
-}
+const {success }=useSelector((state)=>state.newReview)
+
 
 const [quantity,setQuantity]=useState(1)
+const [open,setOpen]=useState(false)
+const [comment,setComment]=useState("")
 
     const increaseQuantity=()=>{
       
@@ -53,14 +55,37 @@ const addToCartHandler=()=>{
 
 }
 
+const submitReviewToggle=()=>{
+
+  open ? setOpen(false): setOpen(true)
+
+}
+
+const reviewSubmitHandler=()=>{
+
+  const myform=new FormData();
+
+  myform.set("comment",comment);
+  myform.set("productId",match.params.id)
 
 
+  dispatch(newReview(myform));
+  history.push(`/product/${match.params.id}`)
+  
+
+  setOpen(false);
+
+}
+
+useEffect(() => {
+  
+  if (success) {
+    dispatch({ type: NEW_REVIEW_RESET});
+  }
 
 
-  useEffect(()=>{
-    dispatch(getProductDetails(match.params.id))
-
-},[dispatch,match.params.id])
+  dispatch(getProductDetails(match.params.id));
+}, [dispatch,success, match.params.id]);
 
   return (
     <Fragment>
@@ -119,31 +144,53 @@ const addToCartHandler=()=>{
               State:<p>{product.state}</p>
               Landmark:<p>{product.landmark}</p>
              
-                
-         
-            
+              </div>
 
-              
-            </div>
-
-            <button className='submitReview'>Submit Review</button>
+            <button onClick={submitReviewToggle} className='submitReview'>Submit Review</button>
   
           </div>
   
         </div>
   
         <h3 className='reviewsHeading'>Reviews</h3>
+         
+
+        <Dialog
+            aria-labelledby="simple-dialog-title"
+            open={open}
+            onClose={submitReviewToggle}
+          >
+            <DialogTitle>Submit Review</DialogTitle>
+            <DialogContent className="submitDialog">
+
+              <textarea
+                className="submitDialogTextArea"
+                cols="30"
+                rows="5"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              ></textarea>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={submitReviewToggle} color="secondary">
+                Cancel
+              </Button>
+              <Button onClick={reviewSubmitHandler} color="primary">
+                Submit
+              </Button>
+            </DialogActions>
+          </Dialog>
   
-        {product.reviews && product.reviews[0] ? (
-              <div className="reviews">
-                {product.reviews &&
-                  product.reviews.map((review) => (
-                    <ReviewCard key={review._id} review={review} />
-                  ))}
-              </div>
-            ) : (
-              <p className="noReviews">No Reviews Yet</p>
-            )}
+          {product.reviews && product.reviews[0] ? (
+            <div className="reviews">
+              {product.reviews &&
+                product.reviews.map((review) => (
+                  <ReviewCard key={review._id} review={review} />
+                ))}
+            </div>
+          ) : (
+            <p className="noReviews">No Reviews Yet</p>
+          )}
             <Footer/>
   
       </Fragment>)}
