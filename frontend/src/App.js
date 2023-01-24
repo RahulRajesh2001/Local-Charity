@@ -20,7 +20,7 @@ import Cart from "./component/Cart/Cart"
 import Shipping from "./component/Cart/Shipping.js";
 import ConfirmOrder from "./component/Cart/ConfirmOrder"
 import OrderSuccess from "./component/Cart/OrderSuccess"
-import MyOrders from "./component/Order/MyOrders"
+import MyOrders from "./component/Order/MyOrders";
 import Dashboard from "./component/Admin/Dashboard"
 import ProductList from "./component/Admin/ProductList"
 import NewUserProduct from "./component/Product/NewUserProduct"

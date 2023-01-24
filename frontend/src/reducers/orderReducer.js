@@ -83,7 +83,7 @@ export const myOrdersReducer = (state = { orders: [] }, action) => {
   }
 };
 
-// all order reducer
+// all order reducer --admin
 
 export const allOrdersReducer = (state = { orders: [] }, action) => {
   switch (action.type) {

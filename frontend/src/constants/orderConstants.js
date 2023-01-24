@@ -2,25 +2,26 @@ export const CREATE_ORDER_REQUEST="CREATE_ORDER_REQUEST";
 export const CREATE_ORDER_SUCCESS="CREATE_ORDER_SUCCESS";
 export const CREATE_ORDER_FAIL="CREATE_ORDER_FAIL";
 
+//constants for orders 
 
 export const MY_ORDERS_REQUEST="MY_ORDERS_REQUEST";
 export const MY_ORDERS_SUCCESS="MY_ORDERS_SUCCESS";
 export const MY_ORDERS_FAIL="MY_ORDERS_FAIL";
 
-//all orders constants
+//all orders constants --admin
 export const ALL_ORDERS_REQUEST = "ALL_ORDERS_REQUEST";
 export const ALL_ORDERS_SUCCESS = "ALL_ORDERS_SUCCESS";
 export const ALL_ORDERS_FAIL = "ALL_ORDERS_FAIL";
 
 
-//constants for delete order   
+//constants for delete order   --admin
 
 export const DELETE_ORDER_REQUEST = "DELETE_ORDER_REQUEST";
 export const DELETE_ORDER_SUCCESS = "DELETE_ORDER_SUCCESS";
 export const DELETE_ORDER_RESET = "DELETE_ORDER_RESET";
 export const DELETE_ORDER_FAIL = "DELETE_ORDER_FAIL";
 
-// for order details
+// for order details for admin
 
 export const ORDER_DETAILS_REQUEST = "ORDER_DETAILS_REQUEST";
 export const ORDER_DETAILS_SUCCESS = "ORDER_DETAILS_SUCCESS";
