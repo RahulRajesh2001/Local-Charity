@@ -23,6 +23,7 @@ const UpdateUser = ({ history, match }) => {
 
   const userId = match.params.id;
 
+
   useEffect(() => {
     if (user && user._id !== userId) {
       dispatch(getUserDetails(userId));
@@ -32,7 +33,7 @@ const UpdateUser = ({ history, match }) => {
       setRole(user.role);
     }
 
-    history.push("/admin/users")
+  
   
   }, [dispatch, history, user, userId]);
 
@@ -46,6 +47,7 @@ const UpdateUser = ({ history, match }) => {
     myForm.set("role", role);
 
     dispatch(updateUser(userId, myForm));
+   
    
   };
 
@@ -100,6 +102,7 @@ const UpdateUser = ({ history, match }) => {
                 disabled={
                   updateLoading ? true : false || role === "" ? true : false
                 }
+               
               >
                 Update
               </Button>

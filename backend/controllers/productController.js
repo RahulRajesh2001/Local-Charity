@@ -119,6 +119,8 @@ images.push(req.body.images);
   }
 
   if(images !== undefined){
+
+    
 //Delete images from cloudinary
     for (let i = 0; i < product.images.length; i++) {
   

@@ -40,12 +40,7 @@ const UsersList = ({ history }) => {
       minWidth: 200,
       flex: 1,
     },
-    {
-      field: "name",
-      headerName: "Name",
-      minWidth: 150,
-      flex: 0.5,
-    },
+  
 
     {
       field: "role",
@@ -53,11 +48,7 @@ const UsersList = ({ history }) => {
       type: "number",
       minWidth: 150,
       flex: 0.3,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "role") === "admin"
-          ? "greenColor"
-          : "redColor";
-      },
+
     },
 
     {
@@ -95,7 +86,7 @@ const UsersList = ({ history }) => {
         id: item._id,
         role: item.role,
         email: item.email,
-        name: item.name,
+    
       });
     });
 

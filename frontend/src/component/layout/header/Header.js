@@ -20,7 +20,10 @@ function Header() {
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/products">Donations</Nav.Link>
           <Nav.Link href="/login">Account</Nav.Link>
-          <Nav.Link href="/cart">Cart</Nav.Link>         
+          <Nav.Link href="/cart">Cart</Nav.Link> 
+          <Nav.Link href="/contact">Contact</Nav.Link> 
+          <Nav.Link href="/about">About</Nav.Link> 
+
         
 
         

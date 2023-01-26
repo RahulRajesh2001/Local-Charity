@@ -38,12 +38,7 @@ const OrderList = ({history}) => {
   
 const columns = [
   { field: 'id', headerName: 'Product_ID', width: 220 },
-  {
-    field: 'Name',
-    headerName: 'Product Name',
-    width: 150,
-    editable: true,
-  },
+  
   {
     field: 'actions',
     headerName: 'Actions',
@@ -80,7 +75,7 @@ orders &&
 orders.forEach((item) => {
   rows.push({
     id: item._id,
-    Name:item.name
+  
    
   });
 });
