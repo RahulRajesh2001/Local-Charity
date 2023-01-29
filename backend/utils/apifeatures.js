@@ -20,7 +20,11 @@ class ApiFeatures {
 
   filter() {
     const queryCopy = { ...this.queryStr };
+
+
     //   Removing some fields for category
+
+
     const removeFields = ["keyword", "page", "limit"];
 
     removeFields.forEach((key) => delete queryCopy[key]);
@@ -34,6 +38,9 @@ class ApiFeatures {
 
     return this;
   }
+
+
+  // for pagination
 
   pagination(resultPerPage) {
     const currentPage = Number(this.queryStr.page) || 1;

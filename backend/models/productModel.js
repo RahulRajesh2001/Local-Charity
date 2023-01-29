@@ -40,6 +40,10 @@ const productSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+
+
+  // Donator details
+
   yourname: {
     type: String,
     required: true,
@@ -72,6 +76,7 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  //for reviews 
   reviews: [
     {
       user: {

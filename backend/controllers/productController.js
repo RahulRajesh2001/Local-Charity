@@ -76,6 +76,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get All Products (Admin)
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+
   const products = await Product.find();
 
   res.status(200).json({
@@ -161,6 +162,7 @@ images.push(req.body.images);
 // Delete Product(admin)
 
 exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
+
   const product = await Product.findById(req.params.id);
 
   if (!product) {
@@ -190,8 +192,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
   const review = {
     user: req.user._id,
     name: req.user.name,
-    rating: Number(rating),
-    comment,
+    comment:req.user.comment,
   };
 
   const product = await Product.findById(productId);
@@ -209,14 +210,6 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
     product.reviews.push(review);
     product.numOfReviews = product.reviews.length;
   }
-
-  let avg = 0;
-
-  product.reviews.forEach((rev) => {
-    avg += rev.rating;
-  });
-
-  product.ratings = avg / product.reviews.length;
 
   await product.save({ validateBeforeSave: false });
 
@@ -253,19 +246,6 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     (rev) => rev._id.toString() !== req.query.id.toString()
   );
 
-  let avg = 0;
-
-  reviews.forEach((rev) => {
-    avg += rev.rating;
-  });
-
-  let ratings = 0;
-
-  if (reviews.length === 0) {
-    ratings = 0;
-  } else {
-    ratings = avg / reviews.length;
-  }
 
   const numOfReviews = reviews.length;
 
