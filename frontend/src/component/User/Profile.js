@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "./Profile.css";
 
 
+
 const Profile = ({ history }) => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
 
@@ -23,6 +24,7 @@ const Profile = ({ history }) => {
 
           <Fragment>
           <MetaData title={`${user.name}'s Profile`} />
+        
           <div className="profileContainer">
           
             <div>
@@ -49,7 +51,10 @@ const Profile = ({ history }) => {
                 <Link to="/password/update">Change Password</Link>
               </div>
             </div>
+  
+            
             </div>
+           
 
        
          

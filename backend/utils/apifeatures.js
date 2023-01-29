@@ -18,6 +18,7 @@ class ApiFeatures {
     return this;
   }
 
+
   filter() {
     const queryCopy = { ...this.queryStr };
 

@@ -47,6 +47,7 @@ const UpdateUser = ({ history, match }) => {
     myForm.set("role", role);
 
     dispatch(updateUser(userId, myForm));
+    history.push("/admin/dashboard")
    
    
   };

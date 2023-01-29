@@ -11,7 +11,7 @@ import SpellcheckIcon from '@mui/icons-material/Spellcheck';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import HomeIcon from '@mui/icons-material/Home';
 import PlaceIcon from '@mui/icons-material/Place';
-import Sidebar from "../Admin/Sidebar"
+
 
 
 
@@ -41,7 +41,8 @@ const [landmark, setlandmark] = useState("");
 
   const categories = [
    "Cloths",
-   "Books"
+   "Books",
+   "Instraments"
   ];
 
   useEffect(() => {
@@ -104,7 +105,7 @@ const [landmark, setlandmark] = useState("");
       
       <MetaData title="Create Product" />
       <div className="dashboard">
-      <Sidebar/>
+        
         <div className="newProductContainer">
           <form
             className="createProductForm"

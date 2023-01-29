@@ -3,15 +3,17 @@
   box-sizing: border-box;
   background-color: rgb(221, 221, 221);
   border-left: 1px solid rgba(0, 0, 0, 0.158);
-  display: flex;
   flex-direction: column;
   height: 200vh;
+  position:absolute;
+  left: 0px;
  
 }
 .newProductContainer h1 {
   color: rgba(0, 0, 0, 0.733);
   font: 300 2rem "Roboto";
   text-align: center;
+
 }
 
 .createProductForm {
