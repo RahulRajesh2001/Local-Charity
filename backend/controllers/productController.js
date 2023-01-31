@@ -192,7 +192,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
   const review = {
     user: req.user._id,
     name: req.user.name,
-    comment:req.user.comment,
+    comment:comment,
   };
 
   const product = await Product.findById(productId);

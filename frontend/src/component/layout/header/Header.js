@@ -2,7 +2,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
+import SearchIcon from '@mui/icons-material/Search';
 
 function Header() {
   return (
@@ -29,7 +29,7 @@ function Header() {
         
         </Nav>
 
-        <Nav.Link href="/search">Search</Nav.Link> 
+        <Nav.Link href="/search"><SearchIcon/></Nav.Link> 
        
       </Navbar.Collapse>
     </Container>
