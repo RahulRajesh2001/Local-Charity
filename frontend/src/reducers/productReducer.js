@@ -136,7 +136,7 @@ export const productsReducer = (state = { products: [] }, action) => {
     }
   };
 
-  //product reducer for deleting updating products from product list in admin panel
+//product reducer for deleting updating products from product list in admin panel
 
   export const productReducer = (state = {}, action) => {
     switch (action.type) {

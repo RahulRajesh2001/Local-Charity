@@ -40,7 +40,7 @@ const reducer=combineReducers({
     allUsers: allUsersReducer,
     userDetails: userDetailsReducer,
     productReviews: productReviewsReducer,
-    review: reviewReducer,
+    reviews: reviewReducer,
     forgotPassword: forgotPasswordReducer,
     myOrderDetails:myOrderDetailsReducer,
     newReview: newReviewReducer,
