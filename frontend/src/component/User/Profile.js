@@ -4,6 +4,7 @@ import MetaData from "../layout/metadata";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
+import Footer from "../layout/footer/Footer"
 
 
 
@@ -54,6 +55,8 @@ const Profile = ({ history }) => {
   
             
             </div>
+
+            <Footer/>
            
 
        

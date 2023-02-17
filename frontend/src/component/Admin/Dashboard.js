@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdminProducts } from '../../actions/productAction';
 import {getAllOrders} from "../../actions/orderActions"
-import {getAllUsers} from "../../actions/userActoin"
+import {getAllUsers} from "../../actions/userActoin";
+import Footer from "../layout/footer/Footer";
 
 
 const Dashboard = () => {
@@ -67,6 +68,7 @@ return (
     </div>
    
   </div>
+  <Footer/>
  
   
   </Fragment>

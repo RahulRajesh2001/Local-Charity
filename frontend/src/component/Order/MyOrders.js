@@ -9,6 +9,7 @@ import { Fragment } from 'react';
 import MetaData from "../layout/metadata";
 import Loader from "../layout/Loader/Loader";
 import LaunchIcon from '@mui/icons-material/Launch';
+import Footer from "../layout/footer/Footer"
 
 
 
@@ -96,7 +97,9 @@ const MyOrders = () => {
   
             <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
           </div>
+          
         )}
+        <Footer/>
       </Fragment>
     );
   };

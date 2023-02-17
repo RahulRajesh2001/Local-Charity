@@ -11,6 +11,7 @@ import SpellcheckIcon from '@mui/icons-material/Spellcheck';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import HomeIcon from '@mui/icons-material/Home';
 import PlaceIcon from '@mui/icons-material/Place';
+import Footer from "../layout/footer/Footer"
 
 
 
@@ -268,6 +269,7 @@ const [landmark, setlandmark] = useState("");
           </form>
         </div>
       </div>
+      <Footer/>
   
     </Fragment>
   );

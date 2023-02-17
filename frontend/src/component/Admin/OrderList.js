@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Sidebar from './Sidebar';
 import { Fragment } from 'react';
 import MetaData from "../layout/metadata";
-
+import Footer from "../layout/footer/Footer"
 
 
 
@@ -115,6 +115,7 @@ orders.forEach((item) => {
   </div>
   
 </div>
+<Footer/>
 </Fragment>
 
 

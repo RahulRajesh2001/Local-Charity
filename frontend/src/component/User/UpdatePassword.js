@@ -8,6 +8,7 @@ import MetaData from "../layout/metadata";
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LockIcon from '@mui/icons-material/Lock';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import Footer from "../layout/footer/Footer"
 
 const UpdatePassword = ({ history }) => {
   const dispatch = useDispatch();
@@ -101,6 +102,7 @@ const UpdatePassword = ({ history }) => {
               </form>
             </div>
           </div>
+          <Footer/>
         </Fragment>
       )}
     </Fragment>

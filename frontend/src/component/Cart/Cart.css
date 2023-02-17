@@ -3,11 +3,12 @@
   margin: auto;
   text-align: center;
   padding: 10vmax;
-  height: 50vh;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+ 
 }
 .emptyCart > svg {
   font-size: 5vmax;
@@ -28,6 +29,7 @@
 
 .cartPage {
   padding: 5vmax;
+
 }
 
 .cartHeader {
@@ -42,6 +44,7 @@
 }
 .cartHeader > p {
   margin: 10px;
+  
 }
 .cartHeader > p:last-child {
   text-align: end;

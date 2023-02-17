@@ -5,8 +5,8 @@ import SideBar from "./Sidebar";
 import {getOrderDetails,} from "../../actions/orderActions";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
-import "./orderDetails.css";
 import Button from '@mui/material/Button';
+import Footer from "../layout/footer/Footer"
 
 
 const OrderDetails = ({ history, match }) => {
@@ -39,7 +39,7 @@ const backToDashboard=()=>{
       <MetaData title="Order Details" />
       <div className="dashboard">
         <SideBar />
-        <div className="newProductContainer">
+        <div className="orderDetailsContainer">
           {loading ? (
             <Loader />
           ) : (
@@ -96,6 +96,7 @@ const backToDashboard=()=>{
          
         </div>
       </div>
+      <Footer/>
     </Fragment>
   );
 };

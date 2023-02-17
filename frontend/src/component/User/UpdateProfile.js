@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updateProfile, loadUser } from "../../actions/userActoin";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import MetaData from "../layout/metadata";
+import Footer from "../layout/footer/Footer"
 
 const UpdateProfile = ({ history }) => {
   const dispatch = useDispatch();
@@ -120,6 +121,7 @@ const UpdateProfile = ({ history }) => {
               </form>
             </div>
           </div>
+          <Footer/>
         </Fragment>
       )}
     </Fragment>

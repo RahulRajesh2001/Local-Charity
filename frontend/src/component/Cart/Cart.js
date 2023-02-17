@@ -25,12 +25,17 @@ const Cart = ({ history }) => {
   return (
     <Fragment>
       {cartItems.length ===0 ? (
-         <div className="emptyCart">
+        <Fragment>
+          <div className="emptyCart">
          <RemoveShoppingCartIcon />
 
          <Typography>No Product in Your Cart</Typography>
          <Link to="/products">View Products</Link>
+        
        </div>
+        <Footer/>
+        </Fragment>
+         
       ) :(<Fragment>
         <div className='cartPage'>
             <div className='cartHeader'>
@@ -66,7 +71,7 @@ const Cart = ({ history }) => {
                 <Footer/>
        
     </Fragment>
-    )};
+    )}
     </Fragment>
   )
 }

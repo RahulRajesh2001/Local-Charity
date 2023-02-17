@@ -40,6 +40,9 @@
   .orderDetailsCartItems > p {
     font: 400 1.8vmax "Roboto";
   }
+  .orderDetailsCartItemsContainer{
+    width: 70px;
+  }
   
   .orderDetailsCartItems {
     padding: 2vmax 5vmax;

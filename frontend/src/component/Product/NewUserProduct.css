@@ -1,14 +1,23 @@
-.newProductContainer {
+.dashboard{
   width: 100%;
-  box-sizing: border-box;
-  background-color: rgb(221, 221, 221);
-  border-left: 1px solid rgba(0, 0, 0, 0.158);
-  flex-direction: column;
-  height: 200vh;
-  position:absolute;
-  left: 0px;
- 
+  height: 1400px;
 }
+ .newProductContainer {
+  width: 450px;
+  height:1400px;
+  position:relative;
+  left: 0px;
+  top: 10px;
+  margin-left: 600px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}  
+
+
+
+
+
 .newProductContainer h1 {
   color: rgba(0, 0, 0, 0.733);
   font: 300 2rem "Roboto";
@@ -24,7 +33,7 @@
   margin: auto;
   padding: 3vmax;
   justify-content: space-evenly;
-  height: 150%;
+  height: 1200px;
   width: 60vh;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
