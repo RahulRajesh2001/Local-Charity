@@ -40,7 +40,7 @@ const Dashboard = () => {
 
 return (
   <Fragment>
-    <div className="dashboard">
+    <div className="dashboard" >
     <MetaData title="Dashboard - Admin Panel" />
     <Sidebar />
 

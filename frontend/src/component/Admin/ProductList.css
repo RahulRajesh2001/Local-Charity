@@ -7,6 +7,12 @@
   flex-direction: column;
   height: 100vh;
 }
+.dashboard{
+  height: 700px;
+}
+.dashboardContainer{
+ height: 700px;
+}
 
 #productListHeading {
   font: 400 2rem "Roboto";
