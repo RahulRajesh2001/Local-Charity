@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import "./ProductList.css"
 import {useSelector, useDispatch} from "react-redux";
-import {getAdminProducts,deleteProduct} from "../../actions/productAction";
+import {getAdminProducts,deleteProduct,clearErrors} from "../../actions/productAction";
 import {Link} from "react-router-dom";
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Sidebar from './Sidebar';
 import { Fragment } from 'react';
 import MetaData from "../layout/metadata";
-
+import { useAlert } from "react-alert";
 
 
 
@@ -18,23 +18,36 @@ import MetaData from "../layout/metadata";
 
 const ProductList = ({history}) => {
   const dispatch=useDispatch();
+  const alert = useAlert();
 
-  const {products}=useSelector((state)=>state.products)
+  const {error,products}=useSelector((state)=>state.products)
   
-  const {isDeleted,isUpdated}=useSelector((state)=>state.product)
+  const { error: deleteError, isDeleted } = useSelector((state) => state.product);
 
   const deleteProductHandler=(id)=>{
 
     dispatch(deleteProduct(id));
-    history.push("/admin/dashboard")
+   
   }
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
 
-  useEffect(()=>{
+    if (deleteError) {
+      alert.error(deleteError);
+      dispatch(clearErrors());
+    }
 
-  
+    if (isDeleted) {
+      alert.success("Product Deleted Successfully");
+      history.push("/admin/dashboard");
+     
+    }
 
-   dispatch (getAdminProducts())
-  },[dispatch,isDeleted,history,isUpdated])
+    dispatch(getAdminProducts());
+  }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   
 const columns = [

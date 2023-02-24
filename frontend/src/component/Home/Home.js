@@ -6,7 +6,9 @@ import MetaData from '../layout/metadata'
 import {getProduct} from "../../actions/productAction"
 import{useSelector,useDispatch} from "react-redux";
 import Loader from '../layout/Loader/Loader';
-import Footer from "../layout/footer/Footer"
+import Footer from "../layout/footer/Footer";
+import background from "../images/charity.webp"
+
 
 const Home = () => {
 
@@ -26,9 +28,14 @@ const Home = () => {
 
 <MetaData title="Local Charity"/>
 
-<div className='banner'>
+<div className='banner' style={{backgroundImage:`url(${background})`,
+backgroundSize:"cover"
+}}>
+
+
+
     <p>Welcome to local charity</p>
-    <h1>Find suitable products below</h1>
+
     <a href="#container">
       <button>
         Scroll<CgMouse/>

@@ -11,12 +11,14 @@ import PublicIcon from '@mui/icons-material/Public';
 import PhoneIcon from '@mui/icons-material/Phone';
 import TransferWithinAStationIcon from '@mui/icons-material/TransferWithinAStation';
 import {Country,State} from "country-state-city";
-import CheckoutSteps from "../Cart/CheckoutSteps"
+import CheckoutSteps from "../Cart/CheckoutSteps";
+import { useAlert } from 'react-alert'
 
 
 
 const Shipping = ({history}) => {
 const dispatch=useDispatch();
+const alert = useAlert()
 const{shippingInfo}=useSelector((state)=>state.cart)
 
     const [name, setName]=useState(shippingInfo.name);
